@@ -15,6 +15,10 @@ implemented by an AI coding agent.
 - **Date picker**: vue-datepicker
 - **Database**: Supabase (PostgreSQL managed)
 - **Supabase client**: @supabase/supabase-js
+- **Design system**: specs/design-system.html + tailwind.config.ts
+- **Fonts**: Fraunces (display) + Inter (sans)
+- **Primary color**: Ember #C25A33
+- **Secondary color**: Pine #335E42
 
 ## Conventions
 - Composition API only — `<script setup lang="ts">` on every component
