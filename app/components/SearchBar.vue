@@ -57,21 +57,21 @@ function handleSubmit() {
 <template>
   <form
     @submit.prevent="handleSubmit"
-    class="flex flex-col gap-4 rounded-2xl bg-white p-6 shadow-md"
+    class="flex flex-col gap-4 rounded-xl bg-surface p-6 shadow-lg"
   >
     <div class="flex flex-col gap-1">
-      <label for="destination" class="text-sm font-medium text-gray-700">Destination</label>
+      <label for="destination" class="text-sm font-medium text-neutral-800">Destination</label>
       <input
         id="destination"
         v-model="destination"
         type="text"
         placeholder="Where are you going?"
-        class="rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        class="w-full rounded-md border border-border-strong px-4 h-11 text-base bg-surface text-text placeholder:text-neutral-400 hover:border-neutral-500 focus:outline-none focus:border-primary focus:shadow-glow transition-[border-color,box-shadow] duration-base ease-out"
         data-testid="destination-input"
       />
       <p
         v-if="errors.destination"
-        class="text-sm text-red-600"
+        class="text-sm text-error-500"
         data-testid="destination-error"
       >
         {{ errors.destination }}
@@ -79,11 +79,13 @@ function handleSubmit() {
     </div>
 
     <div class="flex flex-col gap-1">
-      <label class="text-sm font-medium text-gray-700">Dates</label>
-      <VueDatePicker v-model="dateRange" range />
+      <label class="text-sm font-medium text-neutral-800">Dates</label>
+      <div class="rounded-md border border-border overflow-hidden">
+        <VueDatePicker v-model="dateRange" range />
+      </div>
       <p
         v-if="errors.dates"
-        class="text-sm text-red-600"
+        class="text-sm text-error-500"
         data-testid="dates-error"
       >
         {{ errors.dates }}
@@ -91,24 +93,24 @@ function handleSubmit() {
     </div>
 
     <div class="flex flex-col gap-1">
-      <label class="text-sm font-medium text-gray-700">Guests</label>
+      <label class="text-sm font-medium text-neutral-800">Guests</label>
       <div class="flex items-center gap-3">
         <button
           type="button"
           @click="decreaseGuests"
           :disabled="guests === 1"
-          class="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 text-lg font-medium disabled:cursor-not-allowed disabled:opacity-40"
+          class="flex h-8 w-8 items-center justify-center rounded-full border border-border-strong text-base font-medium text-text disabled:cursor-not-allowed disabled:opacity-40"
           data-testid="guests-decrease"
         >
           -
         </button>
-        <span class="w-6 text-center text-sm font-medium" data-testid="guests-value">
+        <span class="w-6 text-center text-sm font-medium text-text" data-testid="guests-value">
           {{ guests }}
         </span>
         <button
           type="button"
           @click="increaseGuests"
-          class="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 text-lg font-medium"
+          class="flex h-8 w-8 items-center justify-center rounded-full border border-border-strong text-base font-medium text-text"
           data-testid="guests-increase"
         >
           +
@@ -118,7 +120,7 @@ function handleSubmit() {
 
     <button
       type="submit"
-      class="w-full rounded-lg bg-blue-600 px-6 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-700 sm:w-auto"
+      class="inline-flex items-center justify-center w-full rounded-md bg-primary px-5 h-10 text-sm font-medium text-white transition-[background-color,box-shadow] duration-base ease-out hover:bg-primary-600 focus-visible:outline-none focus-visible:shadow-glow sm:w-auto"
       data-testid="submit"
     >
       Search

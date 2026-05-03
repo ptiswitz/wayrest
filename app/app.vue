@@ -1,5 +1,7 @@
 <template>
-  <NuxtPage />
+  <div class="min-h-screen bg-bg">
+    <NuxtPage />
+  </div>
 </template>
 
 <script setup lang="ts">

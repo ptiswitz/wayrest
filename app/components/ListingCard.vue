@@ -12,8 +12,8 @@ function onImageError() {
 </script>
 
 <template>
-  <div class="rounded-xl overflow-hidden">
-    <div class="aspect-[4/3] bg-gray-100">
+  <div class="rounded-lg overflow-hidden bg-surface shadow-md cursor-pointer transition-all duration-base ease-out hover:-translate-y-0.5 hover:shadow-lg">
+    <div class="aspect-[4/3] bg-neutral-100">
       <img
         v-if="listing.imageUrl && !hasError"
         :src="listing.imageUrl"
@@ -25,11 +25,11 @@ function onImageError() {
       <div
         v-else
         data-testid="placeholder"
-        class="w-full h-full flex items-center justify-center bg-gray-200"
+        class="w-full h-full flex items-center justify-center bg-neutral-100"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="w-12 h-12 text-gray-400"
+          class="w-12 h-12 text-neutral-400"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -45,12 +45,12 @@ function onImageError() {
       </div>
     </div>
     <!-- SPEC-GAP: card padding and text sizing not specified → p-3 / text-sm -->
-    <div class="p-3">
-      <h2 data-testid="title" class="text-sm font-semibold line-clamp-2">
+    <div class="p-5 flex flex-col gap-2">
+      <h2 data-testid="title" class="font-display font-medium text-lg tracking-tighter line-clamp-2">
         {{ listing.title }}
       </h2>
-      <p class="text-sm text-gray-500 mt-1">{{ listing.city }}, {{ listing.country }}</p>
-      <p class="text-sm font-semibold mt-1">{{ listing.pricePerNight }} $ / night</p>
+      <p class="text-sm text-text-muted">{{ listing.city }}, {{ listing.country }}</p>
+      <p class="text-sm text-text-muted">{{ listing.pricePerNight }} $ / night</p>
     </div>
   </div>
 </template>
