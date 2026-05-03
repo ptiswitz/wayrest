@@ -13,6 +13,8 @@ implemented by an AI coding agent.
 - **Testing**: Vitest + @vue/test-utils
 - **Linting**: ESLint + Prettier
 - **Date picker**: vue-datepicker
+- **Database**: Supabase (PostgreSQL managed)
+- **Supabase client**: @supabase/supabase-js
 
 ## Conventions
 - Composition API only — `<script setup lang="ts">` on every component
