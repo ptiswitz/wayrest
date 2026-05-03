@@ -12,6 +12,7 @@ implemented by an AI coding agent.
 - **Global state**: Pinia
 - **Testing**: Vitest + @vue/test-utils
 - **Linting**: ESLint + Prettier
+- **Date picker**: vue-datepicker
 
 ## Conventions
 - Composition API only — `<script setup lang="ts">` on every component
