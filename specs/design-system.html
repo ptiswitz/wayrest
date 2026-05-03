@@ -1,0 +1,1182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Wayrest — Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* ============ COLOR ============ */
+    /* Primary — Ember (lantern glow / waypoint marker) */
+    --color-primary-50:  #FBF1EC;
+    --color-primary-100: #F6DDD0;
+    --color-primary-200: #EFBCA3;
+    --color-primary-300: #E69875;
+    --color-primary-400: #D9764E;
+    --color-primary-500: #C25A33;  /* base */
+    --color-primary-600: #A24727;
+    --color-primary-700: #813820;
+    --color-primary-800: #5F2A19;
+    --color-primary-900: #3F1D12;
+
+    /* Secondary — Pine (trail at dusk) */
+    --color-secondary-50:  #EEF2EF;
+    --color-secondary-100: #D6E0D8;
+    --color-secondary-200: #ADC2B2;
+    --color-secondary-300: #80A089;
+    --color-secondary-400: #547F61;
+    --color-secondary-500: #335E42;  /* base */
+    --color-secondary-600: #284C35;
+    --color-secondary-700: #1F3B2A;
+    --color-secondary-800: #162A1E;
+    --color-secondary-900: #0E1B14;
+
+    /* Neutral — Parchment (warm-tinted, never pure gray) */
+    --color-neutral-0:   #FFFFFF;
+    --color-neutral-50:  #FAF7F2;
+    --color-neutral-100: #F2EDE4;
+    --color-neutral-200: #E5DDD0;
+    --color-neutral-300: #CFC4B2;
+    --color-neutral-400: #A89B85;
+    --color-neutral-500: #80735E;
+    --color-neutral-600: #5C5142;
+    --color-neutral-700: #40392E;
+    --color-neutral-800: #2A251D;
+    --color-neutral-900: #18140F;
+
+    /* Status */
+    --color-success-50:  #ECF4ED;
+    --color-success-500: #3C8C50;
+    --color-success-700: #28653A;
+
+    --color-error-50:  #FAEDEA;
+    --color-error-500: #C44536;
+    --color-error-700: #8E2B1F;
+
+    --color-warning-50:  #FBF3E1;
+    --color-warning-500: #C9912B;
+    --color-warning-700: #8E6418;
+
+    /* Semantic aliases */
+    --bg: var(--color-neutral-50);
+    --surface: var(--color-neutral-0);
+    --surface-sunken: var(--color-neutral-100);
+    --border: var(--color-neutral-200);
+    --border-strong: var(--color-neutral-300);
+    --text: var(--color-neutral-900);
+    --text-muted: var(--color-neutral-600);
+    --text-subtle: var(--color-neutral-500);
+
+    /* ============ TYPE ============ */
+    --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+    --text-xs:   0.75rem;   /* 12 */
+    --text-sm:   0.875rem;  /* 14 */
+    --text-base: 1rem;      /* 16 */
+    --text-lg:   1.125rem;  /* 18 */
+    --text-xl:   1.375rem;  /* 22 */
+    --text-2xl:  1.75rem;   /* 28 */
+    --text-3xl:  2.25rem;   /* 36 */
+    --text-4xl:  3rem;      /* 48 */
+    --text-5xl:  4rem;      /* 64 */
+
+    --leading-tight: 1.15;
+    --leading-snug: 1.3;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.7;
+
+    /* ============ SPACING (4px base) ============ */
+    --space-0: 0;
+    --space-1: 0.25rem;  /* 4 */
+    --space-2: 0.5rem;   /* 8 */
+    --space-3: 0.75rem;  /* 12 */
+    --space-4: 1rem;     /* 16 */
+    --space-5: 1.25rem;  /* 20 */
+    --space-6: 1.5rem;   /* 24 */
+    --space-8: 2rem;     /* 32 */
+    --space-10: 2.5rem;  /* 40 */
+    --space-12: 3rem;    /* 48 */
+    --space-16: 4rem;    /* 64 */
+    --space-20: 5rem;    /* 80 */
+    --space-24: 6rem;    /* 96 */
+
+    /* ============ RADIUS ============ */
+    --radius-none: 0;
+    --radius-xs: 4px;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+
+    /* ============ SHADOW (warm-tinted) ============ */
+    --shadow-xs: 0 1px 2px rgba(64, 57, 46, 0.06);
+    --shadow-sm: 0 1px 2px rgba(64, 57, 46, 0.06), 0 2px 4px rgba(64, 57, 46, 0.04);
+    --shadow-md: 0 2px 4px rgba(64, 57, 46, 0.06), 0 6px 12px rgba(64, 57, 46, 0.06);
+    --shadow-lg: 0 4px 8px rgba(64, 57, 46, 0.06), 0 12px 24px rgba(64, 57, 46, 0.08);
+    --shadow-xl: 0 8px 16px rgba(64, 57, 46, 0.06), 0 24px 48px rgba(64, 57, 46, 0.12);
+    --shadow-glow: 0 0 0 4px rgba(194, 90, 51, 0.18);
+
+    /* ============ MOTION ============ */
+    --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+    --dur-fast: 120ms;
+    --dur-base: 200ms;
+    --dur-slow: 320ms;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-sans);
+    color: var(--text);
+    background: var(--bg);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============ PAGE LAYOUT ============ */
+  .page {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: var(--space-16) var(--space-8) var(--space-24);
+  }
+  header.hero {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: var(--space-12);
+    margin-bottom: var(--space-16);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: var(--space-8);
+  }
+  .brandmark {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  .brandmark-glyph {
+    width: 44px; height: 44px;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-700));
+    display: grid; place-items: center;
+    box-shadow: var(--shadow-md);
+  }
+  .brandmark-glyph svg { display: block; }
+  .brandmark-text {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--text-2xl);
+    letter-spacing: -0.01em;
+    font-variation-settings: "opsz" 48;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: var(--text-5xl);
+    line-height: var(--leading-tight);
+    letter-spacing: -0.02em;
+    margin: var(--space-6) 0 var(--space-3);
+    font-variation-settings: "opsz" 144;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--color-primary-600);
+    font-weight: 400;
+  }
+  .hero .lede {
+    color: var(--text-muted);
+    font-size: var(--text-lg);
+    max-width: 56ch;
+    margin: 0;
+  }
+  .hero .meta {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-subtle);
+    text-align: right;
+  }
+  .hero .meta div { line-height: 1.8; }
+
+  section + section { margin-top: var(--space-20); }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: var(--space-8);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--border);
+  }
+  .section-head h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--text-2xl);
+    letter-spacing: -0.01em;
+    margin: 0;
+    font-variation-settings: "opsz" 48;
+  }
+  .section-head .section-num {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .subsection-title {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin: var(--space-10) 0 var(--space-4);
+  }
+  .subsection-title:first-child { margin-top: 0; }
+
+  /* ============ COLOR ============ */
+  .ramp {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    gap: 2px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: var(--space-6);
+  }
+  .ramp.ten { grid-template-columns: repeat(10, 1fr); }
+  .ramp.three { grid-template-columns: repeat(3, 1fr); }
+  .swatch {
+    aspect-ratio: 1 / 1.1;
+    padding: var(--space-3);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    line-height: 1.4;
+  }
+  .swatch .step {
+    font-weight: 500;
+    font-size: 11px;
+  }
+  .swatch .hex { opacity: 0.7; }
+  .ramp-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: var(--space-3);
+  }
+  .ramp-label .name {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 500;
+    font-variation-settings: "opsz" 24;
+  }
+  .ramp-label .name span {
+    color: var(--text-subtle);
+    font-style: italic;
+    font-weight: 400;
+    margin-left: var(--space-2);
+  }
+  .ramp-label .role {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+
+  .status-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+  }
+  .status-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-5);
+  }
+  .status-card .swatches { display: flex; gap: var(--space-2); margin-bottom: var(--space-4); }
+  .status-card .dot { width: 32px; height: 32px; border-radius: var(--radius-sm); }
+  .status-card h4 {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 500;
+    margin: 0 0 var(--space-1);
+  }
+  .status-card p {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    margin: 0 0 var(--space-3);
+  }
+  .status-card code {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-subtle);
+  }
+
+  /* ============ TYPE ============ */
+  .type-table {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--surface);
+  }
+  .type-row {
+    display: grid;
+    grid-template-columns: 120px 1fr 200px;
+    align-items: baseline;
+    padding: var(--space-5) var(--space-6);
+    border-bottom: 1px solid var(--border);
+    gap: var(--space-6);
+  }
+  .type-row:last-child { border-bottom: 0; }
+  .type-row .token {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+  .type-row .specimen {
+    color: var(--text);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .type-row .meta {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-subtle);
+    text-align: right;
+  }
+
+  .font-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
+  }
+  .font-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+  }
+  .font-card .role {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-subtle);
+    margin-bottom: var(--space-2);
+  }
+  .font-card .name {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-3);
+    line-height: 1;
+  }
+  .font-card .display .name {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-variation-settings: "opsz" 144;
+    letter-spacing: -0.02em;
+  }
+  .font-card .ui .name {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .font-card .desc {
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-4);
+  }
+  .font-card .glyphs {
+    font-size: var(--text-2xl);
+    line-height: 1.2;
+    color: var(--text);
+  }
+  .font-card.display .glyphs { font-family: var(--font-display); font-variation-settings: "opsz" 48; }
+  .font-card.ui .glyphs { font-family: var(--font-sans); }
+
+  /* ============ SPACING / RADIUS / SHADOW ============ */
+  .space-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-5);
+  }
+  .space-row {
+    display: grid;
+    grid-template-columns: 90px 80px 1fr;
+    align-items: center;
+    gap: var(--space-4);
+  }
+  .space-row .token {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+  .space-row .px {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-subtle);
+  }
+  .space-row .bar {
+    height: 12px;
+    background: var(--color-primary-500);
+    border-radius: 2px;
+  }
+
+  .radius-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--space-4);
+  }
+  .radius-tile {
+    aspect-ratio: 1;
+    background: var(--color-primary-100);
+    border: 2px solid var(--color-primary-300);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--space-3);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-primary-800);
+  }
+  .radius-tile .px { color: var(--color-primary-600); opacity: 0.8; }
+
+  .shadow-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-6);
+  }
+  .shadow-tile {
+    aspect-ratio: 1;
+    background: var(--surface);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--space-4);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+  .shadow-tile .name { color: var(--text); font-weight: 500; }
+
+  /* ============ COMPONENTS ============ */
+  .component-grid {
+    display: grid;
+    gap: var(--space-6);
+  }
+  .demo {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .demo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-4) var(--space-5);
+    border-bottom: 1px solid var(--border);
+    background: var(--color-neutral-50);
+  }
+  .demo-header h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 500;
+    margin: 0;
+  }
+  .demo-header .tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-subtle);
+  }
+  .demo-body {
+    padding: var(--space-8);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    align-items: center;
+  }
+  .demo-body.col {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .demo-grid {
+    padding: var(--space-8);
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  /* Buttons */
+  .btn {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: var(--text-sm);
+    line-height: 1;
+    padding: 0 var(--space-5);
+    height: 40px;
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    transition: transform var(--dur-fast) var(--ease-out),
+                background var(--dur-base) var(--ease-out),
+                box-shadow var(--dur-base) var(--ease-out),
+                color var(--dur-base) var(--ease-out);
+    white-space: nowrap;
+    letter-spacing: -0.005em;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-sm { height: 32px; font-size: var(--text-xs); padding: 0 var(--space-3); border-radius: var(--radius-sm); }
+  .btn-lg { height: 52px; font-size: var(--text-base); padding: 0 var(--space-6); }
+
+  .btn-primary {
+    background: var(--color-primary-500);
+    color: var(--color-neutral-0);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.12);
+  }
+  .btn-primary:hover { background: var(--color-primary-600); }
+  .btn-primary:focus-visible { outline: none; box-shadow: var(--shadow-glow); }
+  .btn-primary:disabled { background: var(--color-neutral-200); color: var(--color-neutral-400); cursor: not-allowed; }
+
+  .btn-secondary {
+    background: var(--surface);
+    color: var(--color-neutral-800);
+    border-color: var(--border-strong);
+  }
+  .btn-secondary:hover { border-color: var(--color-neutral-700); background: var(--color-neutral-50); }
+  .btn-secondary:focus-visible { outline: none; box-shadow: var(--shadow-glow); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--color-neutral-800);
+  }
+  .btn-ghost:hover { background: var(--color-neutral-100); }
+  .btn-ghost:focus-visible { outline: none; box-shadow: var(--shadow-glow); }
+
+  .btn-pine {
+    background: var(--color-secondary-500);
+    color: white;
+  }
+  .btn-pine:hover { background: var(--color-secondary-600); }
+
+  /* Inputs */
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    width: 100%;
+    max-width: 360px;
+  }
+  .field label {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-neutral-800);
+  }
+  .field .hint {
+    font-size: var(--text-xs);
+    color: var(--text-subtle);
+  }
+  .input {
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    padding: 0 var(--space-4);
+    height: 44px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-strong);
+    background: var(--surface);
+    color: var(--text);
+    width: 100%;
+    transition: border-color var(--dur-base) var(--ease-out),
+                box-shadow var(--dur-base) var(--ease-out);
+  }
+  .input::placeholder { color: var(--color-neutral-400); }
+  .input:hover { border-color: var(--color-neutral-500); }
+  .input:focus {
+    outline: none;
+    border-color: var(--color-primary-500);
+    box-shadow: var(--shadow-glow);
+  }
+  .input.error { border-color: var(--color-error-500); }
+  .input.error:focus { box-shadow: 0 0 0 4px rgba(196, 69, 54, 0.18); }
+  .field.error .hint { color: var(--color-error-700); }
+
+  .input-group {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    padding: 0 var(--space-3) 0 var(--space-4);
+    background: var(--surface);
+    height: 44px;
+    width: 100%;
+    max-width: 360px;
+  }
+  .input-group:focus-within {
+    border-color: var(--color-primary-500);
+    box-shadow: var(--shadow-glow);
+  }
+  .input-group svg { color: var(--text-subtle); flex-shrink: 0; }
+  .input-group input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    flex: 1;
+    height: 100%;
+    color: var(--text);
+  }
+
+  /* Badges */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    line-height: 1;
+    padding: 5px var(--space-2);
+    border-radius: var(--radius-full);
+    letter-spacing: 0.01em;
+  }
+  .badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  .badge-neutral { background: var(--color-neutral-100); color: var(--color-neutral-700); }
+  .badge-primary { background: var(--color-primary-100); color: var(--color-primary-700); }
+  .badge-pine    { background: var(--color-secondary-100); color: var(--color-secondary-700); }
+  .badge-success { background: var(--color-success-50); color: var(--color-success-700); }
+  .badge-error   { background: var(--color-error-50);   color: var(--color-error-700); }
+  .badge-warning { background: var(--color-warning-50); color: var(--color-warning-700); }
+  .badge-solid   { background: var(--color-primary-500); color: white; }
+
+  /* Listing card */
+  .listing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+  .listing-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: transform var(--dur-base) var(--ease-out),
+                box-shadow var(--dur-base) var(--ease-out);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+  }
+  .listing-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  .listing-photo {
+    aspect-ratio: 4 / 3;
+    background:
+      repeating-linear-gradient(45deg,
+        var(--color-neutral-100) 0,
+        var(--color-neutral-100) 10px,
+        var(--color-neutral-200) 10px,
+        var(--color-neutral-200) 20px);
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: var(--space-4);
+  }
+  .listing-photo .placeholder-tag {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-neutral-500);
+    background: rgba(255,255,255,0.7);
+    padding: 2px 8px;
+    border-radius: var(--radius-xs);
+  }
+  .listing-photo .save {
+    width: 36px; height: 36px;
+    background: rgba(255,255,255,0.92);
+    border-radius: 50%;
+    border: none;
+    display: grid; place-items: center;
+    cursor: pointer;
+    color: var(--color-neutral-700);
+    box-shadow: var(--shadow-xs);
+  }
+  .listing-photo .save:hover { color: var(--color-primary-500); }
+  .listing-body {
+    padding: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .listing-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-3);
+  }
+  .listing-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--text-lg);
+    margin: 0;
+    letter-spacing: -0.01em;
+    font-variation-settings: "opsz" 24;
+  }
+  .listing-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: var(--text-sm);
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+  .listing-rating svg { color: var(--color-primary-500); }
+  .listing-loc {
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    margin: 0;
+  }
+  .listing-dates {
+    color: var(--text-subtle);
+    font-size: var(--text-sm);
+    margin: 0;
+  }
+  .listing-price {
+    margin-top: var(--space-2);
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+  .listing-price .amt {
+    font-weight: 600;
+    color: var(--text);
+  }
+  .listing-price .per {
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+  }
+  .listing-card .badge-row {
+    position: absolute;
+    bottom: var(--space-4);
+    left: var(--space-4);
+    display: flex;
+    gap: 6px;
+  }
+
+  /* Footer */
+  footer.foot {
+    margin-top: var(--space-24);
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-subtle);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="hero">
+    <div>
+      <div class="brandmark">
+        <div class="brandmark-glyph">
+          <!-- Lantern / waypoint glyph -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2 L19 9 L12 22 L5 9 Z" />
+            <circle cx="12" cy="9" r="2.5" fill="white" stroke="none" />
+          </svg>
+        </div>
+        <span class="brandmark-text">Wayrest</span>
+      </div>
+      <h1>A design system for the <em>journey</em>, not just the booking.</h1>
+      <p class="lede">Wayrest is a place to find rest along the way — a waypoint on a longer route. The system is warm, grounded, and tactile: the glow of a lantern at the trailhead, the hush of an inn at dusk.</p>
+    </div>
+    <div class="meta">
+      <div>v0.1 · Foundations</div>
+      <div>Nuxt 3 · Tailwind</div>
+      <div>03 May 2026</div>
+    </div>
+  </header>
+
+  <!-- ============ COLOR ============ -->
+  <section>
+    <div class="section-head">
+      <h2>Color</h2>
+      <span class="section-num">01 — Palette</span>
+    </div>
+
+    <h3 class="subsection-title">Primary · Ember</h3>
+    <div class="ramp-label">
+      <div class="name">Ember <span>— the lantern glow</span></div>
+      <div class="role">CTAs · brand · selected state · price</div>
+    </div>
+    <div class="ramp" id="ramp-primary"></div>
+
+    <h3 class="subsection-title">Secondary · Pine</h3>
+    <div class="ramp-label">
+      <div class="name">Pine <span>— the trail at dusk</span></div>
+      <div class="role">Trust signals · host badges · success-adjacent</div>
+    </div>
+    <div class="ramp" id="ramp-secondary"></div>
+
+    <h3 class="subsection-title">Neutral · Parchment</h3>
+    <div class="ramp-label">
+      <div class="name">Parchment <span>— warm-tinted, never gray</span></div>
+      <div class="role">Surfaces · text · borders</div>
+    </div>
+    <div class="ramp ten" id="ramp-neutral"></div>
+
+    <h3 class="subsection-title">Status</h3>
+    <div class="status-grid">
+      <div class="status-card">
+        <div class="swatches">
+          <div class="dot" style="background: var(--color-success-50)"></div>
+          <div class="dot" style="background: var(--color-success-500)"></div>
+          <div class="dot" style="background: var(--color-success-700)"></div>
+        </div>
+        <h4>Success · Moss</h4>
+        <p>Confirmed bookings, verified hosts, paid status.</p>
+        <code>#3C8C50</code>
+      </div>
+      <div class="status-card">
+        <div class="swatches">
+          <div class="dot" style="background: var(--color-error-50)"></div>
+          <div class="dot" style="background: var(--color-error-500)"></div>
+          <div class="dot" style="background: var(--color-error-700)"></div>
+        </div>
+        <h4>Error · Clay</h4>
+        <p>Form validation, failed payments, destructive actions.</p>
+        <code>#C44536</code>
+      </div>
+      <div class="status-card">
+        <div class="swatches">
+          <div class="dot" style="background: var(--color-warning-50)"></div>
+          <div class="dot" style="background: var(--color-warning-500)"></div>
+          <div class="dot" style="background: var(--color-warning-700)"></div>
+        </div>
+        <h4>Warning · Honey</h4>
+        <p>Limited availability, expiring offers, soft alerts.</p>
+        <code>#C9912B</code>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TYPE ============ -->
+  <section>
+    <div class="section-head">
+      <h2>Typography</h2>
+      <span class="section-num">02 — Type</span>
+    </div>
+
+    <div class="font-pair">
+      <div class="font-card display">
+        <div class="role">Display</div>
+        <div class="name">Fraunces</div>
+        <p class="desc">A warm, slightly literary serif with optical sizing. Headlines, listing titles, prices in hero positions. Variable <code style="font-family: var(--font-mono); font-size: 12px;">opsz</code> 9–144.</p>
+        <div class="glyphs">Aa Bb · 1234 · &amp; ?</div>
+      </div>
+      <div class="font-card ui">
+        <div class="role">Interface</div>
+        <div class="name">Inter</div>
+        <p class="desc">Geometric, neutral, optimized for screens. Body copy, labels, buttons, navigation, anything functional.</p>
+        <div class="glyphs">Aa Bb · 1234 · &amp; ?</div>
+      </div>
+    </div>
+
+    <h3 class="subsection-title">Display Scale (Fraunces)</h3>
+    <div class="type-table" id="display-scale"></div>
+
+    <h3 class="subsection-title" style="margin-top: var(--space-12)">UI Scale (Inter)</h3>
+    <div class="type-table" id="ui-scale"></div>
+  </section>
+
+  <!-- ============ SPACING ============ -->
+  <section>
+    <div class="section-head">
+      <h2>Spacing &amp; Layout</h2>
+      <span class="section-num">03 — Rhythm</span>
+    </div>
+    <p style="color: var(--text-muted); margin: 0 0 var(--space-6); max-width: 60ch;">A 4&nbsp;px base grid. Use multiples of 4 for everything — padding, gap, margin. Larger steps skip ahead so layouts feel composed, not arithmetic.</p>
+    <div class="space-list" id="space-list"></div>
+  </section>
+
+  <!-- ============ RADIUS ============ -->
+  <section>
+    <div class="section-head">
+      <h2>Border Radius</h2>
+      <span class="section-num">04 — Curvature</span>
+    </div>
+    <p style="color: var(--text-muted); margin: 0 0 var(--space-6); max-width: 60ch;">Soft but not bubbly. Inputs and buttons share <code style="font-family: var(--font-mono);">md</code>. Cards step up to <code style="font-family: var(--font-mono);">lg</code>. Hero imagery and modals use <code style="font-family: var(--font-mono);">xl</code>. Pills and avatars use <code style="font-family: var(--font-mono);">full</code>.</p>
+    <div class="radius-grid" id="radius-grid"></div>
+  </section>
+
+  <!-- ============ SHADOW ============ -->
+  <section>
+    <div class="section-head">
+      <h2>Elevation</h2>
+      <span class="section-num">05 — Shadows</span>
+    </div>
+    <p style="color: var(--text-muted); margin: 0 0 var(--space-8); max-width: 60ch;">Shadows are tinted with warm brown (<code style="font-family: var(--font-mono);">#40392E</code>), never neutral gray. They sit lightly — the goal is depth, not drama.</p>
+    <div class="shadow-grid" id="shadow-grid"></div>
+  </section>
+
+  <!-- ============ COMPONENTS ============ -->
+  <section>
+    <div class="section-head">
+      <h2>Components</h2>
+      <span class="section-num">06 — Building Blocks</span>
+    </div>
+
+    <div class="component-grid">
+
+      <!-- Buttons -->
+      <div class="demo">
+        <div class="demo-header"><h3>Button</h3><span class="tag">primary · secondary · ghost</span></div>
+        <div class="demo-body">
+          <button class="btn btn-primary">Reserve waypoint</button>
+          <button class="btn btn-secondary">Save for later</button>
+          <button class="btn btn-ghost">Cancel</button>
+          <button class="btn btn-pine">Become a host</button>
+        </div>
+        <div class="demo-body" style="border-top: 1px dashed var(--border);">
+          <button class="btn btn-primary btn-lg">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            Continue
+          </button>
+          <button class="btn btn-primary">Default</button>
+          <button class="btn btn-primary btn-sm">Small</button>
+          <button class="btn btn-primary" disabled>Disabled</button>
+        </div>
+      </div>
+
+      <!-- Inputs -->
+      <div class="demo">
+        <div class="demo-header"><h3>Input</h3><span class="tag">field · group · error</span></div>
+        <div class="demo-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+          <div class="field">
+            <label for="i1">Where to?</label>
+            <input id="i1" class="input" placeholder="Search destinations" />
+            <span class="hint">City, region, or landmark</span>
+          </div>
+          <div class="field">
+            <label>Search</label>
+            <div class="input-group">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              <input placeholder="Reykjavík, Iceland" />
+            </div>
+            <span class="hint">With leading icon</span>
+          </div>
+          <div class="field error">
+            <label for="i3">Email</label>
+            <input id="i3" class="input error" value="not-an-email" />
+            <span class="hint">Please enter a valid email address.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badges -->
+      <div class="demo">
+        <div class="demo-header"><h3>Badge</h3><span class="tag">status · category · count</span></div>
+        <div class="demo-body">
+          <span class="badge badge-primary"><span class="badge-dot"></span>New waypoint</span>
+          <span class="badge badge-pine">Superhost</span>
+          <span class="badge badge-success">Confirmed</span>
+          <span class="badge badge-warning">2 left</span>
+          <span class="badge badge-error">Sold out</span>
+          <span class="badge badge-neutral">Pet-friendly</span>
+          <span class="badge badge-solid">Featured</span>
+        </div>
+      </div>
+
+      <!-- Card -->
+      <div class="demo">
+        <div class="demo-header"><h3>Listing Card</h3><span class="tag">primary card pattern</span></div>
+        <div style="padding: var(--space-8);">
+          <div class="listing-grid">
+            <article class="listing-card">
+              <div class="listing-photo">
+                <span class="placeholder-tag">photo · 4:3</span>
+                <button class="save" aria-label="Save">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </button>
+                <div class="badge-row">
+                  <span class="badge badge-pine">Superhost</span>
+                </div>
+              </div>
+              <div class="listing-body">
+                <div class="listing-meta">
+                  <h4 class="listing-title">Lanternkeep Cabin</h4>
+                  <span class="listing-rating">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 14.39 8.26 21 9.27l-5 4.87L17.18 21 12 17.77 6.82 21 8 14.14l-5-4.87 6.61-1.01z"/></svg>
+                    4.92 <span style="color: var(--text-subtle)">· 184</span>
+                  </span>
+                </div>
+                <p class="listing-loc">Hólar, Northern Iceland</p>
+                <p class="listing-dates">May 12 – 17 · waypoint stay</p>
+                <div class="listing-price">
+                  <span class="amt">$184</span><span class="per">&nbsp;/ night</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="listing-card">
+              <div class="listing-photo" style="background: repeating-linear-gradient(135deg, var(--color-secondary-100) 0, var(--color-secondary-100) 10px, var(--color-secondary-200) 10px, var(--color-secondary-200) 20px);">
+                <span class="placeholder-tag">photo · 4:3</span>
+                <button class="save" aria-label="Save">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--color-primary-500)" stroke="var(--color-primary-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </button>
+                <div class="badge-row">
+                  <span class="badge badge-warning">2 left</span>
+                </div>
+              </div>
+              <div class="listing-body">
+                <div class="listing-meta">
+                  <h4 class="listing-title">Greenhollow Inn</h4>
+                  <span class="listing-rating">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 14.39 8.26 21 9.27l-5 4.87L17.18 21 12 17.77 6.82 21 8 14.14l-5-4.87 6.61-1.01z"/></svg>
+                    4.78 <span style="color: var(--text-subtle)">· 412</span>
+                  </span>
+                </div>
+                <p class="listing-loc">Hawkshead, Lake District</p>
+                <p class="listing-dates">Jun 03 – 06 · weekend</p>
+                <div class="listing-price">
+                  <span class="amt">$226</span><span class="per">&nbsp;/ night</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div>Wayrest · Design System v0.1</div>
+    <div>Tokens map 1:1 to Tailwind theme — see tailwind.config.js for export.</div>
+  </footer>
+
+</div>
+
+<script>
+  // --- Color ramps -----------------------------------------------------
+  const ramps = {
+    primary: ['50','100','200','300','400','500','600','700','800','900'],
+    secondary: ['50','100','200','300','400','500','600','700','800','900'],
+    neutral: ['0','50','100','200','300','400','500','600','700','800','900'],
+  };
+  function getVar(v) { return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+  function buildRamp(id, family, steps) {
+    const el = document.getElementById(id);
+    steps.forEach(s => {
+      const v = `--color-${family}-${s}`;
+      const hex = getVar(v);
+      const dark = parseInt(s) >= 400 || (family === 'neutral' && parseInt(s) >= 400);
+      const sw = document.createElement('div');
+      sw.className = 'swatch';
+      sw.style.background = `var(${v})`;
+      sw.style.color = dark ? 'rgba(255,255,255,0.9)' : 'rgba(40,30,20,0.85)';
+      sw.innerHTML = `<div class="step">${s}</div><div class="hex">${hex.toUpperCase()}</div>`;
+      el.appendChild(sw);
+    });
+  }
+  buildRamp('ramp-primary', 'primary', ramps.primary);
+  buildRamp('ramp-secondary', 'secondary', ramps.secondary);
+  buildRamp('ramp-neutral', 'neutral', ramps.neutral);
+
+  // --- Type scales -----------------------------------------------------
+  const displayScale = [
+    { token: 'display-2xl', label: 'A waypoint to rest', size: '4rem',    px: 64, weight: 400, lh: 1.05, opsz: 144 },
+    { token: 'display-xl',  label: 'Find your next stay', size: '3rem',    px: 48, weight: 400, lh: 1.1,  opsz: 96 },
+    { token: 'display-lg',  label: 'Stays along the route', size: '2.25rem', px: 36, weight: 500, lh: 1.15, opsz: 60 },
+    { token: 'display-md',  label: 'Lanternkeep Cabin',   size: '1.75rem', px: 28, weight: 500, lh: 1.2,  opsz: 36 },
+    { token: 'display-sm',  label: 'Hólar, Iceland',       size: '1.375rem', px: 22, weight: 500, lh: 1.25, opsz: 24 },
+  ];
+  const uiScale = [
+    { token: 'text-xl',   label: 'Lede paragraph for hero blocks',   size: '1.375rem', px: 22, weight: 400, lh: 1.45 },
+    { token: 'text-lg',   label: 'Section subhead or quoted body',   size: '1.125rem', px: 18, weight: 400, lh: 1.5 },
+    { token: 'text-base', label: 'Default body — used for paragraphs and most UI text.', size: '1rem',    px: 16, weight: 400, lh: 1.5 },
+    { token: 'text-sm',   label: 'Form labels, helpers, secondary metadata',  size: '0.875rem', px: 14, weight: 500, lh: 1.45 },
+    { token: 'text-xs',   label: 'CAPTIONS · BADGES · TIMESTAMPS', size: '0.75rem',  px: 12, weight: 500, lh: 1.4 },
+  ];
+  function buildTypeTable(id, rows, fontFamily) {
+    const el = document.getElementById(id);
+    rows.forEach(r => {
+      const row = document.createElement('div');
+      row.className = 'type-row';
+      const opsz = r.opsz ? `font-variation-settings: "opsz" ${r.opsz};` : '';
+      row.innerHTML = `
+        <div class="token">${r.token}</div>
+        <div class="specimen" style="font-family: ${fontFamily}; font-size: ${r.size}; font-weight: ${r.weight}; line-height: ${r.lh}; letter-spacing: -0.01em; ${opsz}">${r.label}</div>
+        <div class="meta">${r.px}px · ${r.weight} · ${r.lh}</div>
+      `;
+      el.appendChild(row);
+    });
+  }
+  buildTypeTable('display-scale', displayScale, 'var(--font-display)');
+  buildTypeTable('ui-scale', uiScale, 'var(--font-sans)');
+
+  // --- Spacing ---------------------------------------------------------
+  const spaces = [
+    ['space-1', 4], ['space-2', 8], ['space-3', 12], ['space-4', 16],
+    ['space-5', 20], ['space-6', 24], ['space-8', 32], ['space-10', 40],
+    ['space-12', 48], ['space-16', 64], ['space-20', 80], ['space-24', 96],
+  ];
+  const sl = document.getElementById('space-list');
+  spaces.forEach(([t, px]) => {
+    const r = document.createElement('div');
+    r.className = 'space-row';
+    r.innerHTML = `<div class="token">--${t}</div><div class="px">${px}px</div><div class="bar" style="width: ${px}px"></div>`;
+    sl.appendChild(r);
+  });
+
+  // --- Radius ----------------------------------------------------------
+  const radii = [
+    ['xs', 4], ['sm', 6], ['md', 10], ['lg', 16], ['xl', 24], ['full', 9999],
+  ];
+  const rg = document.getElementById('radius-grid');
+  radii.forEach(([t, px]) => {
+    const tile = document.createElement('div');
+    tile.className = 'radius-tile';
+    tile.style.borderRadius = px === 9999 ? '50%' : `${px}px`;
+    tile.innerHTML = `<div>${t}</div><div class="px">${px === 9999 ? '∞' : px+'px'}</div>`;
+    rg.appendChild(tile);
+  });
+
+  // --- Shadow ----------------------------------------------------------
+  const shadows = ['xs','sm','md','lg','xl'];
+  const sg = document.getElementById('shadow-grid');
+  shadows.forEach(s => {
+    const t = document.createElement('div');
+    t.className = 'shadow-tile';
+    t.style.boxShadow = `var(--shadow-${s})`;
+    t.innerHTML = `<div class="name">shadow-${s}</div><div>elevation ${shadows.indexOf(s)+1}</div>`;
+    sg.appendChild(t);
+  });
+</script>
+</body>
+</html>

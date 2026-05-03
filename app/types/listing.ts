@@ -10,3 +10,7 @@ export interface Listing {
 export interface ListingCardProps {
   listing: Listing
 }
+
+export interface ListingsResponse {
+  listings: Listing[]
+}

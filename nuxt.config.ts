@@ -7,5 +7,9 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css', '@vuepic/vue-datepicker/dist/main.css'],
   vite: {
     plugins: [tailwindcss()]
-  }
+  },
+  runtimeConfig: {
+    supabaseUrl: process.env.SUPABASE_URL ?? '',
+    supabaseKey: process.env.SUPABASE_KEY ?? '',
+  },
 })
