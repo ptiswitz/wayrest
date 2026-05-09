@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
 
   const { data, error } = await supabase
     .from('listings')
-    .select('id, title, city, country, price_per_night, image_url')
+    .select('id, title, city, country, price_per_night, image_url, slug, description, guests, bedrooms, beds, bathrooms, amenities, host_id')
 
   if (error) {
     throw createError({ statusCode: 500, message: error.message })
@@ -24,6 +24,14 @@ export default defineEventHandler(async (event) => {
     country: row.country as string,
     pricePerNight: row.price_per_night as number,
     imageUrl: row.image_url as string | null,
+    slug: row.slug as string,
+    description: row.description as string | null,
+    guests: row.guests as number,
+    bedrooms: row.bedrooms as number,
+    beds: row.beds as number,
+    bathrooms: row.bathrooms as number,
+    amenities: (row.amenities as string[]) ?? [],
+    hostId: row.host_id as number | null,
   }))
 
   const response: ListingsResponse = { listings }

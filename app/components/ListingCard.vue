@@ -12,7 +12,7 @@ function onImageError() {
 </script>
 
 <template>
-  <div class="cursor-pointer">
+  <NuxtLink :to="'/stays/' + listing.slug" class="cursor-pointer block">
     <!-- SPEC-GAP: aspect-[4/3] on wrapper (not img) so placeholder renders at correct ratio without a src -->
     <div class="aspect-[4/3]">
       <img
@@ -22,7 +22,6 @@ function onImageError() {
         class="rounded-lg w-full h-full object-cover shadow-sm transition-all duration-base ease-out hover:-translate-y-0.5 hover:shadow-lg"
         @error="onImageError"
       />
-      <!-- placeholder visual design: neutral gray with centered icon -->
       <div
         v-else
         data-testid="placeholder"
@@ -52,5 +51,5 @@ function onImageError() {
       <p class="text-sm text-text-muted mb-1">{{ listing.city }}, {{ listing.country }}</p>
       <p class="text-sm font-medium text-text">{{ listing.pricePerNight }} $ / night</p>
     </div>
-  </div>
+  </NuxtLink>
 </template>

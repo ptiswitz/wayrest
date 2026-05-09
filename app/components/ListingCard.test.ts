@@ -3,6 +3,11 @@ import { mount } from '@vue/test-utils'
 import ListingCard from './ListingCard.vue'
 import type { Listing } from '../types/listing'
 
+const NuxtLinkStub = {
+  props: ['to'],
+  template: '<a :href="to"><slot /></a>',
+}
+
 const base: Listing = {
   id: 1,
   title: 'Beautiful apartment in the city centre',
@@ -10,11 +15,21 @@ const base: Listing = {
   country: 'Canada',
   pricePerNight: 125,
   imageUrl: 'https://example.com/photo.jpg',
+  slug: 'beautiful-apartment-in-the-city-centre-1',
+  description: 'A lovely apartment.',
+  guests: 4,
+  bedrooms: 2,
+  beds: 2,
+  bathrooms: 1,
+  amenities: ['wifi'],
+  hostId: null,
 }
+
+const globalStubs = { NuxtLink: NuxtLinkStub }
 
 describe('ListingCard', () => {
   it('happy path: renders image, title, location and price correctly', () => {
-    const wrapper = mount(ListingCard, { props: { listing: base } })
+    const wrapper = mount(ListingCard, { props: { listing: base }, global: { stubs: globalStubs } })
 
     expect(wrapper.find('img').exists()).toBe(true)
     expect(wrapper.find('img').attributes('src')).toBe(base.imageUrl)
@@ -25,20 +40,23 @@ describe('ListingCard', () => {
 
   it('truncation: title element has line-clamp-2 class', () => {
     const listing = { ...base, title: 'A'.repeat(300) }
-    const wrapper = mount(ListingCard, { props: { listing } })
+    const wrapper = mount(ListingCard, { props: { listing }, global: { stubs: globalStubs } })
 
     expect(wrapper.find('[data-testid="title"]').classes()).toContain('line-clamp-2')
   })
 
   it('placeholder: null imageUrl renders placeholder instead of img', () => {
-    const wrapper = mount(ListingCard, { props: { listing: { ...base, imageUrl: null } } })
+    const wrapper = mount(ListingCard, {
+      props: { listing: { ...base, imageUrl: null } },
+      global: { stubs: globalStubs },
+    })
 
     expect(wrapper.find('img').exists()).toBe(false)
     expect(wrapper.find('[data-testid="placeholder"]').exists()).toBe(true)
   })
 
   it('placeholder: broken imageUrl renders placeholder after error event', async () => {
-    const wrapper = mount(ListingCard, { props: { listing: base } })
+    const wrapper = mount(ListingCard, { props: { listing: base }, global: { stubs: globalStubs } })
     expect(wrapper.find('img').exists()).toBe(true)
 
     await wrapper.find('img').trigger('error')
@@ -48,14 +66,20 @@ describe('ListingCard', () => {
   })
 
   it('price format: displays "125 $ / night"', () => {
-    const wrapper = mount(ListingCard, { props: { listing: base } })
+    const wrapper = mount(ListingCard, { props: { listing: base }, global: { stubs: globalStubs } })
 
     expect(wrapper.text()).toContain('125 $ / night')
   })
 
   it('location format: displays "Montreal, Canada"', () => {
-    const wrapper = mount(ListingCard, { props: { listing: base } })
+    const wrapper = mount(ListingCard, { props: { listing: base }, global: { stubs: globalStubs } })
 
     expect(wrapper.text()).toContain('Montreal, Canada')
+  })
+
+  it('clicking navigates to /stays/{slug}', () => {
+    const wrapper = mount(ListingCard, { props: { listing: base }, global: { stubs: globalStubs } })
+
+    expect(wrapper.find('a').attributes('href')).toBe('/stays/beautiful-apartment-in-the-city-centre-1')
   })
 })

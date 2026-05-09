@@ -10,9 +10,20 @@ vi.mock('#app', () => ({
   useFetch: mockUseFetch,
 }))
 
+const listingBase = {
+  slug: 'apt-1',
+  description: null,
+  guests: 2,
+  bedrooms: 1,
+  beds: 1,
+  bathrooms: 1,
+  amenities: [],
+  hostId: null,
+}
+
 const listings: Listing[] = [
-  { id: 1, title: 'Apt A', city: 'Paris', country: 'France', pricePerNight: 100, imageUrl: null },
-  { id: 2, title: 'Apt B', city: 'Lyon', country: 'France', pricePerNight: 80, imageUrl: null },
+  { id: 1, title: 'Apt A', city: 'Paris', country: 'France', pricePerNight: 100, imageUrl: null, ...listingBase, slug: 'apt-a-1' },
+  { id: 2, title: 'Apt B', city: 'Lyon', country: 'France', pricePerNight: 80, imageUrl: null, ...listingBase, slug: 'apt-b-2' },
 ]
 
 function stubFetch(options: {
