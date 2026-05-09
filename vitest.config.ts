@@ -12,6 +12,7 @@ export default defineConfig({
       '~': resolve(__dirname, './app'),
       '@': resolve(__dirname, './app'),
       '#app': 'nuxt/app',
+      '#auth': resolve(__dirname, 'node_modules/@sidebase/nuxt-auth/dist/runtime/server/services/index.js'),
     },
   },
 })

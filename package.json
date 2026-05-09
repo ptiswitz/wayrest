@@ -12,9 +12,13 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@auth/core": "^0.34.3",
     "@pinia/nuxt": "^0.11.3",
+    "@sidebase/nuxt-auth": "^1.2.0",
     "@supabase/supabase-js": "^2.105.1",
     "@vuepic/vue-datepicker": "^12.1.0",
+    "bcryptjs": "^3.0.3",
+    "next-auth": "^4.21.1",
     "nuxt": "^4.4.4",
     "pinia": "^3.0.4",
     "vue": "^3.5.33",
@@ -22,6 +26,7 @@
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.4",
+    "@types/bcryptjs": "^2.4.6",
     "@vitejs/plugin-vue": "^6.0.6",
     "@vue/test-utils": "^2.4.10",
     "happy-dom": "^20.9.0",

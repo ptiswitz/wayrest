@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 
+const mockGetServerSession = vi.hoisted(() => vi.fn().mockResolvedValue(null))
 const mockSingle = vi.hoisted(() => vi.fn())
 
 vi.hoisted(() => {
@@ -15,6 +16,10 @@ vi.hoisted(() => {
 
 const mockReadBody = vi.hoisted(() => vi.fn())
 ;(globalThis as Record<string, unknown>).readBody = mockReadBody
+
+vi.mock('#auth', () => ({
+  getServerSession: mockGetServerSession,
+}))
 
 vi.mock('@supabase/supabase-js', () => ({
   createClient: vi.fn(() => ({

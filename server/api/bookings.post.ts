@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
+import { getServerSession } from '#auth'
 import type { CreateBookingRequest, CreateBookingResponse, Booking } from '~/types/booking'
 
 const REQUIRED_FIELDS = [
@@ -8,6 +9,7 @@ const REQUIRED_FIELDS = [
 ] as const
 
 export default defineEventHandler(async (event): Promise<CreateBookingResponse> => {
+  const session = await getServerSession(event)
   const body = await readBody<CreateBookingRequest>(event)
 
   for (const field of REQUIRED_FIELDS) {
@@ -23,6 +25,7 @@ export default defineEventHandler(async (event): Promise<CreateBookingResponse> 
   const { data, error } = await supabase
     .from('bookings')
     .insert({
+      user_id: session?.user?.id ?? null,
       listing_id: body.listingId,
       start_date: body.startDate,
       end_date: body.endDate,

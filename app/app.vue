@@ -1,6 +1,7 @@
 <template>
   <div class="min-h-screen bg-bg">
     <NuxtPage />
+    <AuthModal />
   </div>
 </template>
 
