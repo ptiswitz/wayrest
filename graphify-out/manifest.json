@@ -1,0 +1,110 @@
+{
+  "/home/julien/projects/wayrest/nuxt.config.ts": {
+    "mtime": 1778341589.8027432,
+    "hash": "483231b414862ef34202ea63176df147"
+  },
+  "/home/julien/projects/wayrest/tailwind.config.ts": {
+    "mtime": 1777846712.975284,
+    "hash": "538c221443425061fada1318e2d43478"
+  },
+  "/home/julien/projects/wayrest/vitest.config.ts": {
+    "mtime": 1777843884.290266,
+    "hash": "ceb82a8d312600a3576c753ef77d6451"
+  },
+  "/home/julien/projects/wayrest/server/api/listings.get.ts": {
+    "mtime": 1777843908.987733,
+    "hash": "5dead09e8bb5a363efe3a6597cfdef72"
+  },
+  "/home/julien/projects/wayrest/app/app.vue": {
+    "mtime": 1778028332.9132636,
+    "hash": "9adbd800b902d3f0f1c2a98a12b1e7f1"
+  },
+  "/home/julien/projects/wayrest/app/composables/useSupabase.ts": {
+    "mtime": 1777843895.0700297,
+    "hash": "18acdd40c5df9257db3fdfaca30caf19"
+  },
+  "/home/julien/projects/wayrest/app/components/SearchBar.test.ts": {
+    "mtime": 1777838653.113397,
+    "hash": "56541043973884a29f6e37da8e4b45ff"
+  },
+  "/home/julien/projects/wayrest/app/components/ListingGrid.vue": {
+    "mtime": 1778026477.915324,
+    "hash": "9152047b6fbe726294877c7d8311e6f6"
+  },
+  "/home/julien/projects/wayrest/app/components/ListingGrid.test.ts": {
+    "mtime": 1777843962.098648,
+    "hash": "5caae138d0d369172b6ebafc33dc0e83"
+  },
+  "/home/julien/projects/wayrest/app/components/SearchBar.vue": {
+    "mtime": 1778341964.954644,
+    "hash": "716b6c2bba713ca93abab3f90dff7c21"
+  },
+  "/home/julien/projects/wayrest/app/components/ListingCard.vue": {
+    "mtime": 1778342261.7927377,
+    "hash": "f6d137460db7b4f7d9f6d2fc99d71431"
+  },
+  "/home/julien/projects/wayrest/app/components/ListingCard.test.ts": {
+    "mtime": 1777837417.136426,
+    "hash": "a12caa6864951e7405d4e9e59ddd3307"
+  },
+  "/home/julien/projects/wayrest/app/pages/index.vue": {
+    "mtime": 1778028465.8346698,
+    "hash": "7a406a957022680a58b96f8882193630"
+  },
+  "/home/julien/projects/wayrest/app/types/search.ts": {
+    "mtime": 1777838617.8797379,
+    "hash": "b31b7089174ce2d86fa0b455cf7513dc"
+  },
+  "/home/julien/projects/wayrest/app/types/listing.ts": {
+    "mtime": 1777843867.053371,
+    "hash": "05463b3a1ca8a7aa7297d064fcf23914"
+  },
+  "/home/julien/projects/wayrest/README.md": {
+    "mtime": 1777610002.0,
+    "hash": "884261092c8d74ec62c5c0860a38bc9d"
+  },
+  "/home/julien/projects/wayrest/CLAUDE.md": {
+    "mtime": 1778345112.366735,
+    "hash": "da79aa9343cd2b362206f03762160abc"
+  },
+  "/home/julien/projects/wayrest/public/robots.txt": {
+    "mtime": 1777610002.0,
+    "hash": "243b03ecba82dde9612cd5163145a86d"
+  },
+  "/home/julien/projects/wayrest/specs/design-system.html": {
+    "mtime": 1777844250.4017818,
+    "hash": "76446aa69302849a36fbefee6161855e"
+  },
+  "/home/julien/projects/wayrest/specs/SPEC-TEMPLATE.md": {
+    "mtime": 1777836359.2676075,
+    "hash": "b6c94f26bbac67188acdeadab71abeed"
+  },
+  "/home/julien/projects/wayrest/specs/CONSTITUTION.md": {
+    "mtime": 1777846777.6351702,
+    "hash": "9b317ef15fe8c16936b2b6eea08a5b87"
+  },
+  "/home/julien/projects/wayrest/specs/listing-detail.html": {
+    "mtime": 1778343047.66864,
+    "hash": "d1f241cc76194c07b0476113f67edbc5"
+  },
+  "/home/julien/projects/wayrest/specs/DESIGN.md": {
+    "mtime": 1777844384.0290773,
+    "hash": "76d7cec8238967b81a03115f5113158c"
+  },
+  "/home/julien/projects/wayrest/specs/features/SPEC-004-homepage.md": {
+    "mtime": 1778026493.4142604,
+    "hash": "48404345ac9f0682238358ebbb71acb6"
+  },
+  "/home/julien/projects/wayrest/specs/features/SPEC-003-listing-grid.md": {
+    "mtime": 1777843345.6523852,
+    "hash": "e2ba943c134991c509311178c9506c35"
+  },
+  "/home/julien/projects/wayrest/specs/features/SPEC-001-listing-card.md": {
+    "mtime": 1777836918.7726264,
+    "hash": "95d5932c9c9fb8fcd533782e1415edb7"
+  },
+  "/home/julien/projects/wayrest/specs/features/SPEC-002-search-bar.md": {
+    "mtime": 1777838253.5506434,
+    "hash": "87fb740cd0ed6d6d514468bea6dac7ce"
+  }
+}

@@ -1,0 +1,1792 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "search_flow",
+        "label": "Search Flow: SearchBar \u2192 SearchParams \u2192 index.vue handler",
+        "nodes": [
+          "searchbar_vue",
+          "search_types",
+          "index_vue",
+          "searchbar_handlesubmit"
+        ],
+        "relation": "implement",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "app/components/SearchBar.vue"
+      },
+      {
+        "id": "listing_display_pipeline",
+        "label": "Listing Display Pipeline: API \u2192 ListingGrid \u2192 ListingCard",
+        "nodes": [
+          "listings_get",
+          "listinggrid_vue",
+          "listingcard_vue"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "app/components/ListingGrid.vue"
+      },
+      {
+        "id": "supabase_initialization_pattern",
+        "label": "Supabase Initialization Pattern: runtimeConfig \u2192 createClient (server route vs composable)",
+        "nodes": [
+          "listings_get",
+          "usesupbase_composable",
+          "nuxt_config"
+        ],
+        "relation": "participate_in",
+        "confidence": "INFERRED",
+        "confidence_score": 0.85,
+        "source_file": "server/api/listings.get.ts"
+      },
+      {
+        "id": "spec_driven_feature_flow",
+        "label": "Spec-Driven Development Feature Flow",
+        "nodes": [
+          "sdd_principle",
+          "spec_template",
+          "spec001_listingcard"
+        ],
+        "relation": "implement",
+        "confidence": "INFERRED",
+        "confidence_score": 0.85,
+        "source_file": "specs/CONSTITUTION.md"
+      },
+      {
+        "id": "homepage_composition",
+        "label": "Homepage Component Composition",
+        "nodes": [
+          "spec004_homepage",
+          "spec002_searchbar",
+          "spec003_listinggrid"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "specs/features/SPEC-004-homepage.md"
+      },
+      {
+        "id": "listing_type_shared_data",
+        "label": "Listing Type Shared Across Components",
+        "nodes": [
+          "listing_listing",
+          "spec001_listingcard",
+          "spec003_listinggrid"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "app/types/listing.ts"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "label": "nuxt.config.ts",
+      "file_type": "code",
+      "source_file": "nuxt.config.ts",
+      "source_location": "L1",
+      "id": "nuxt_config_ts",
+      "community": 11,
+      "norm_label": "nuxt.config.ts"
+    },
+    {
+      "label": "tailwind.config.ts",
+      "file_type": "code",
+      "source_file": "tailwind.config.ts",
+      "source_location": "L1",
+      "id": "tailwind_config_ts",
+      "community": 12,
+      "norm_label": "tailwind.config.ts"
+    },
+    {
+      "label": "vitest.config.ts",
+      "file_type": "code",
+      "source_file": "vitest.config.ts",
+      "source_location": "L1",
+      "id": "vitest_config_ts",
+      "community": 13,
+      "norm_label": "vitest.config.ts"
+    },
+    {
+      "label": "listings.get.ts",
+      "file_type": "code",
+      "source_file": "server/api/listings.get.ts",
+      "source_location": "L1",
+      "id": "server_api_listings_get_ts",
+      "community": 6,
+      "norm_label": "listings.get.ts"
+    },
+    {
+      "label": "config",
+      "file_type": "code",
+      "source_file": "server/api/listings.get.ts",
+      "source_location": "L6",
+      "id": "api_listings_get_config",
+      "community": 6,
+      "norm_label": "config"
+    },
+    {
+      "label": "supabase",
+      "file_type": "code",
+      "source_file": "server/api/listings.get.ts",
+      "source_location": "L7",
+      "id": "api_listings_get_supabase",
+      "community": 6,
+      "norm_label": "supabase"
+    },
+    {
+      "label": "listings",
+      "file_type": "code",
+      "source_file": "server/api/listings.get.ts",
+      "source_location": "L20",
+      "id": "api_listings_get_listings",
+      "community": 6,
+      "norm_label": "listings"
+    },
+    {
+      "label": "response",
+      "file_type": "code",
+      "source_file": "server/api/listings.get.ts",
+      "source_location": "L29",
+      "id": "api_listings_get_response",
+      "community": 6,
+      "norm_label": "response"
+    },
+    {
+      "label": "app.vue",
+      "file_type": "code",
+      "source_file": "app/app.vue",
+      "source_location": "L1",
+      "id": "app_app_vue",
+      "community": 14,
+      "norm_label": "app.vue"
+    },
+    {
+      "label": "useSupabase.ts",
+      "file_type": "code",
+      "source_file": "app/composables/useSupabase.ts",
+      "source_location": "L1",
+      "id": "app_composables_usesupabase_ts",
+      "community": 9,
+      "norm_label": "usesupabase.ts"
+    },
+    {
+      "label": "useSupabase()",
+      "file_type": "code",
+      "source_file": "app/composables/useSupabase.ts",
+      "source_location": "L9",
+      "id": "composables_usesupabase_usesupabase",
+      "community": 9,
+      "norm_label": "usesupabase()"
+    },
+    {
+      "label": "SearchBar.test.ts",
+      "file_type": "code",
+      "source_file": "app/components/SearchBar.test.ts",
+      "source_location": "L1",
+      "id": "app_components_searchbar_test_ts",
+      "community": 2,
+      "norm_label": "searchbar.test.ts"
+    },
+    {
+      "label": "setup()",
+      "file_type": "code",
+      "source_file": "app/components/SearchBar.test.ts",
+      "source_location": "L13",
+      "id": "components_searchbar_test_setup",
+      "community": 2,
+      "norm_label": "setup()"
+    },
+    {
+      "label": "setDates()",
+      "file_type": "code",
+      "source_file": "app/components/SearchBar.test.ts",
+      "source_location": "L20",
+      "id": "components_searchbar_test_setdates",
+      "community": 2,
+      "norm_label": "setdates()"
+    },
+    {
+      "label": "wrapper",
+      "file_type": "code",
+      "source_file": "app/components/SearchBar.test.ts",
+      "source_location": "L28",
+      "id": "components_searchbar_test_wrapper",
+      "community": 2,
+      "norm_label": "wrapper"
+    },
+    {
+      "label": "start",
+      "file_type": "code",
+      "source_file": "app/components/SearchBar.test.ts",
+      "source_location": "L29",
+      "id": "components_searchbar_test_start",
+      "community": 2,
+      "norm_label": "start"
+    },
+    {
+      "label": "end",
+      "file_type": "code",
+      "source_file": "app/components/SearchBar.test.ts",
+      "source_location": "L30",
+      "id": "components_searchbar_test_end",
+      "community": 2,
+      "norm_label": "end"
+    },
+    {
+      "label": "emitted",
+      "file_type": "code",
+      "source_file": "app/components/SearchBar.test.ts",
+      "source_location": "L36",
+      "id": "components_searchbar_test_emitted",
+      "community": 2,
+      "norm_label": "emitted"
+    },
+    {
+      "label": "btn",
+      "file_type": "code",
+      "source_file": "app/components/SearchBar.test.ts",
+      "source_location": "L67",
+      "id": "components_searchbar_test_btn",
+      "community": 2,
+      "norm_label": "btn"
+    },
+    {
+      "label": "ListingGrid.vue",
+      "file_type": "code",
+      "source_file": "app/components/ListingGrid.vue",
+      "source_location": "L1",
+      "id": "app_components_listinggrid_vue",
+      "community": 4,
+      "norm_label": "listinggrid.vue"
+    },
+    {
+      "label": "hasError",
+      "file_type": "code",
+      "source_file": "app/components/ListingGrid.vue",
+      "source_location": "L10",
+      "id": "components_listinggrid_haserror",
+      "community": 4,
+      "norm_label": "haserror"
+    },
+    {
+      "label": "listings",
+      "file_type": "code",
+      "source_file": "app/components/ListingGrid.vue",
+      "source_location": "L11",
+      "id": "components_listinggrid_listings",
+      "community": 4,
+      "norm_label": "listings"
+    },
+    {
+      "label": "ListingGrid.test.ts",
+      "file_type": "code",
+      "source_file": "app/components/ListingGrid.test.ts",
+      "source_location": "L1",
+      "id": "app_components_listinggrid_test_ts",
+      "community": 4,
+      "norm_label": "listinggrid.test.ts"
+    },
+    {
+      "label": "mockUseFetch",
+      "file_type": "code",
+      "source_file": "app/components/ListingGrid.test.ts",
+      "source_location": "L7",
+      "id": "components_listinggrid_test_mockusefetch",
+      "community": 4,
+      "norm_label": "mockusefetch"
+    },
+    {
+      "label": "listings",
+      "file_type": "code",
+      "source_file": "app/components/ListingGrid.test.ts",
+      "source_location": "L13",
+      "id": "components_listinggrid_test_listings",
+      "community": 4,
+      "norm_label": "listings"
+    },
+    {
+      "label": "stubFetch()",
+      "file_type": "code",
+      "source_file": "app/components/ListingGrid.test.ts",
+      "source_location": "L18",
+      "id": "components_listinggrid_test_stubfetch",
+      "community": 4,
+      "norm_label": "stubfetch()"
+    },
+    {
+      "label": "wrapper",
+      "file_type": "code",
+      "source_file": "app/components/ListingGrid.test.ts",
+      "source_location": "L37",
+      "id": "components_listinggrid_test_wrapper",
+      "community": 4,
+      "norm_label": "wrapper"
+    },
+    {
+      "label": "SearchBar.vue",
+      "file_type": "code",
+      "source_file": "app/components/SearchBar.vue",
+      "source_location": "L1",
+      "id": "app_components_searchbar_vue",
+      "community": 2,
+      "norm_label": "searchbar.vue"
+    },
+    {
+      "label": "ListingCard.vue",
+      "file_type": "code",
+      "source_file": "app/components/ListingCard.vue",
+      "source_location": "L1",
+      "id": "app_components_listingcard_vue",
+      "community": 3,
+      "norm_label": "listingcard.vue"
+    },
+    {
+      "label": "ListingCard.test.ts",
+      "file_type": "code",
+      "source_file": "app/components/ListingCard.test.ts",
+      "source_location": "L1",
+      "id": "app_components_listingcard_test_ts",
+      "community": 3,
+      "norm_label": "listingcard.test.ts"
+    },
+    {
+      "label": "base",
+      "file_type": "code",
+      "source_file": "app/components/ListingCard.test.ts",
+      "source_location": "L6",
+      "id": "components_listingcard_test_base",
+      "community": 3,
+      "norm_label": "base"
+    },
+    {
+      "label": "wrapper",
+      "file_type": "code",
+      "source_file": "app/components/ListingCard.test.ts",
+      "source_location": "L17",
+      "id": "components_listingcard_test_wrapper",
+      "community": 3,
+      "norm_label": "wrapper"
+    },
+    {
+      "label": "listing",
+      "file_type": "code",
+      "source_file": "app/components/ListingCard.test.ts",
+      "source_location": "L27",
+      "id": "components_listingcard_test_listing",
+      "community": 3,
+      "norm_label": "listing"
+    },
+    {
+      "label": "index.vue",
+      "file_type": "code",
+      "source_file": "app/pages/index.vue",
+      "source_location": "L1",
+      "id": "app_pages_index_vue",
+      "community": 15,
+      "norm_label": "index.vue"
+    },
+    {
+      "label": "search.ts",
+      "file_type": "code",
+      "source_file": "app/types/search.ts",
+      "source_location": "L1",
+      "id": "app_types_search_ts",
+      "community": 8,
+      "norm_label": "search.ts"
+    },
+    {
+      "label": "SearchParams",
+      "file_type": "code",
+      "source_file": "app/types/search.ts",
+      "source_location": "L1",
+      "id": "types_search_searchparams",
+      "community": 8,
+      "norm_label": "searchparams"
+    },
+    {
+      "label": "SearchBarEmits",
+      "file_type": "code",
+      "source_file": "app/types/search.ts",
+      "source_location": "L8",
+      "id": "types_search_searchbaremits",
+      "community": 8,
+      "norm_label": "searchbaremits"
+    },
+    {
+      "label": "listing.ts",
+      "file_type": "code",
+      "source_file": "app/types/listing.ts",
+      "source_location": "L1",
+      "id": "app_types_listing_ts",
+      "community": 3,
+      "norm_label": "listing.ts"
+    },
+    {
+      "label": "Listing",
+      "file_type": "code",
+      "source_file": "app/types/listing.ts",
+      "source_location": "L1",
+      "id": "types_listing_listing",
+      "community": 3,
+      "norm_label": "listing"
+    },
+    {
+      "label": "ListingCardProps",
+      "file_type": "code",
+      "source_file": "app/types/listing.ts",
+      "source_location": "L10",
+      "id": "types_listing_listingcardprops",
+      "community": 3,
+      "norm_label": "listingcardprops"
+    },
+    {
+      "label": "ListingsResponse",
+      "file_type": "code",
+      "source_file": "app/types/listing.ts",
+      "source_location": "L14",
+      "id": "types_listing_listingsresponse",
+      "community": 3,
+      "norm_label": "listingsresponse"
+    },
+    {
+      "label": "Nuxt Config",
+      "file_type": "code",
+      "source_file": "nuxt.config.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "nuxt_config",
+      "community": 0,
+      "norm_label": "nuxt config"
+    },
+    {
+      "label": "Tailwind Config",
+      "file_type": "code",
+      "source_file": "tailwind.config.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "tailwind_config",
+      "community": 0,
+      "norm_label": "tailwind config"
+    },
+    {
+      "label": "Vitest Config",
+      "file_type": "code",
+      "source_file": "vitest.config.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "vitest_config",
+      "community": 16,
+      "norm_label": "vitest config"
+    },
+    {
+      "label": "Listings API Handler",
+      "file_type": "code",
+      "source_file": "server/api/listings.get.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "listings_get",
+      "community": 0,
+      "norm_label": "listings api handler"
+    },
+    {
+      "label": "App Root Component",
+      "file_type": "code",
+      "source_file": "app/app.vue",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "app_vue",
+      "community": 7,
+      "norm_label": "app root component"
+    },
+    {
+      "label": "useSupabase Composable",
+      "file_type": "code",
+      "source_file": "app/composables/useSupabase.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "usesupbase_composable",
+      "community": 0,
+      "norm_label": "usesupabase composable"
+    },
+    {
+      "label": "SearchBar Component",
+      "file_type": "code",
+      "source_file": "app/components/SearchBar.vue",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "searchbar_vue",
+      "community": 7,
+      "norm_label": "searchbar component"
+    },
+    {
+      "label": "SearchBar Tests",
+      "file_type": "code",
+      "source_file": "app/components/SearchBar.test.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "searchbar_test",
+      "community": 7,
+      "norm_label": "searchbar tests"
+    },
+    {
+      "label": "ListingGrid Component",
+      "file_type": "code",
+      "source_file": "app/components/ListingGrid.vue",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "listinggrid_vue",
+      "community": 0,
+      "norm_label": "listinggrid component"
+    },
+    {
+      "label": "ListingGrid Tests",
+      "file_type": "code",
+      "source_file": "app/components/ListingGrid.test.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "listinggrid_test",
+      "community": 0,
+      "norm_label": "listinggrid tests"
+    },
+    {
+      "label": "ListingCard Component",
+      "file_type": "code",
+      "source_file": "app/components/ListingCard.vue",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "listingcard_vue",
+      "community": 0,
+      "norm_label": "listingcard component"
+    },
+    {
+      "label": "ListingCard Tests",
+      "file_type": "code",
+      "source_file": "app/components/ListingCard.test.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "listingcard_test",
+      "community": 0,
+      "norm_label": "listingcard tests"
+    },
+    {
+      "label": "Homepage Index Page",
+      "file_type": "code",
+      "source_file": "app/pages/index.vue",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_vue",
+      "community": 7,
+      "norm_label": "homepage index page"
+    },
+    {
+      "label": "Search Types (SearchParams, SearchBarEmits)",
+      "file_type": "code",
+      "source_file": "app/types/search.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "search_types",
+      "community": 7,
+      "norm_label": "search types (searchparams, searchbaremits)"
+    },
+    {
+      "label": "Wayrest Design Token System",
+      "file_type": "rationale",
+      "source_file": "tailwind.config.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Tailwind v4 CSS-first approach preferred via @theme blocks; JS config retained for tooling compatibility (IDE plugins, legacy integrations). Tokens map 1:1 to DESIGN.md. Color palette uses Ember (primary), Pine (secondary), Parchment (neutral) \u2014 outdoor/journey aesthetic. Warm-tinted shadows use rgba(64,57,46,...) base.",
+      "id": "design_token_system",
+      "community": 0,
+      "norm_label": "wayrest design token system"
+    },
+    {
+      "label": "Supabase Server-Only Config Gap",
+      "file_type": "rationale",
+      "source_file": "server/api/listings.get.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "SPEC-GAP: server routes cannot import from app/composables, so Supabase is initialized directly in each server route. supabaseUrl/supabaseKey are server-only runtimeConfig \u2014 this works for SSR but not pure client-side. Future spec should move keys to runtimeConfig.public if direct client-side Supabase access is needed.",
+      "id": "supabase_server_gap",
+      "community": 0,
+      "norm_label": "supabase server-only config gap"
+    },
+    {
+      "label": "SearchBar.validate()",
+      "file_type": "code",
+      "source_file": "app/components/SearchBar.vue",
+      "source_location": "23",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "searchbar_validate",
+      "community": 10,
+      "norm_label": "searchbar.validate()"
+    },
+    {
+      "label": "SearchBar.handleSubmit()",
+      "file_type": "code",
+      "source_file": "app/components/SearchBar.vue",
+      "source_location": "45",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "searchbar_handlesubmit",
+      "community": 10,
+      "norm_label": "searchbar.handlesubmit()"
+    },
+    {
+      "label": "Listing Interface",
+      "file_type": "code",
+      "source_file": "app/types/listing.ts",
+      "source_location": "1-8",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "listing_listing",
+      "community": 1,
+      "norm_label": "listing interface"
+    },
+    {
+      "label": "ListingCardProps Interface",
+      "file_type": "code",
+      "source_file": "app/types/listing.ts",
+      "source_location": "10-12",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "listing_listingcardprops",
+      "community": 1,
+      "norm_label": "listingcardprops interface"
+    },
+    {
+      "label": "ListingsResponse Interface",
+      "file_type": "code",
+      "source_file": "app/types/listing.ts",
+      "source_location": "14-16",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "listing_listingsresponse",
+      "community": 1,
+      "norm_label": "listingsresponse interface"
+    },
+    {
+      "label": "Nuxt Minimal Starter README",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme_nuxt_starter",
+      "community": 17,
+      "norm_label": "nuxt minimal starter readme"
+    },
+    {
+      "label": "Wayrest CLAUDE.md Project Instructions",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_md_wayrest",
+      "community": 18,
+      "norm_label": "wayrest claude.md project instructions"
+    },
+    {
+      "label": "Wayrest Project Constitution",
+      "file_type": "document",
+      "source_file": "specs/CONSTITUTION.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "constitution_wayrest",
+      "community": 5,
+      "norm_label": "wayrest project constitution"
+    },
+    {
+      "label": "Wayrest Design System Documentation",
+      "file_type": "document",
+      "source_file": "specs/DESIGN.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "design_md_wayrest",
+      "community": 5,
+      "norm_label": "wayrest design system documentation"
+    },
+    {
+      "label": "Spec Template",
+      "file_type": "document",
+      "source_file": "specs/SPEC-TEMPLATE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "spec_template",
+      "community": 1,
+      "norm_label": "spec template"
+    },
+    {
+      "label": "Wayrest Design System HTML Reference",
+      "file_type": "document",
+      "source_file": "specs/design-system.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "design_system_html",
+      "community": 5,
+      "norm_label": "wayrest design system html reference"
+    },
+    {
+      "label": "Listing Detail Page HTML Reference",
+      "file_type": "document",
+      "source_file": "specs/listing-detail.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "listing_detail_html",
+      "community": 5,
+      "norm_label": "listing detail page html reference"
+    },
+    {
+      "label": "SPEC-001 ListingCard Feature Spec",
+      "file_type": "document",
+      "source_file": "specs/features/SPEC-001-listing-card.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "spec001_listingcard",
+      "community": 1,
+      "norm_label": "spec-001 listingcard feature spec"
+    },
+    {
+      "label": "SPEC-002 SearchBar Feature Spec",
+      "file_type": "document",
+      "source_file": "specs/features/SPEC-002-search-bar.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "spec002_searchbar",
+      "community": 1,
+      "norm_label": "spec-002 searchbar feature spec"
+    },
+    {
+      "label": "SPEC-003 ListingGrid Feature Spec",
+      "file_type": "document",
+      "source_file": "specs/features/SPEC-003-listing-grid.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "spec003_listinggrid",
+      "community": 1,
+      "norm_label": "spec-003 listinggrid feature spec"
+    },
+    {
+      "label": "SPEC-004 Homepage Feature Spec",
+      "file_type": "document",
+      "source_file": "specs/features/SPEC-004-homepage.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "spec004_homepage",
+      "community": 1,
+      "norm_label": "spec-004 homepage feature spec"
+    },
+    {
+      "label": "Spec-Driven Development Methodology",
+      "file_type": "rationale",
+      "source_file": "specs/CONSTITUTION.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Every feature is defined by a spec before being implemented by an AI coding agent. The spec is submitted, the agent asks questions before coding, delivered code is validated against the spec, and the spec is committed alongside the code as documentation. This ensures requirements are explicit and verifiable, preventing AI agents from making undocumented architecture decisions.",
+      "id": "sdd_principle",
+      "community": 1,
+      "norm_label": "spec-driven development methodology"
+    },
+    {
+      "label": "Ember Primary Color System",
+      "file_type": "rationale",
+      "source_file": "specs/DESIGN.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Ember (#C25A33) chosen as primary color to evoke lantern glow \u2014 a waypoint marker aesthetic. Used for CTAs, brand marks, selected states, and price emphasis. Color ramps designed for OKLCH-adjacent perceptual uniformity.",
+      "id": "ember_color_system",
+      "community": 5,
+      "norm_label": "ember primary color system"
+    },
+    {
+      "label": "Pine Secondary Color System",
+      "file_type": "rationale",
+      "source_file": "specs/DESIGN.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Pine (#335E42) chosen as secondary color to evoke the trail at dusk. Used for trust signals (Superhost, verified), tertiary CTAs, success-adjacent states. Warm-grounded aesthetic pairing with Ember.",
+      "id": "pine_color_system",
+      "community": 5,
+      "norm_label": "pine secondary color system"
+    },
+    {
+      "label": "SearchParams Interface",
+      "file_type": "rationale",
+      "source_file": "specs/features/SPEC-002-search-bar.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "searchparams_interface",
+      "community": 1,
+      "norm_label": "searchparams interface"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/api/listings.get.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "server_api_listings_get_ts",
+      "target": "api_listings_get_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/api/listings.get.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "server_api_listings_get_ts",
+      "target": "api_listings_get_supabase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/api/listings.get.ts",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "server_api_listings_get_ts",
+      "target": "api_listings_get_listings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/api/listings.get.ts",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "server_api_listings_get_ts",
+      "target": "api_listings_get_response",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/composables/useSupabase.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "app_composables_usesupabase_ts",
+      "target": "composables_usesupabase_usesupabase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/components/SearchBar.test.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_components_searchbar_test_ts",
+      "target": "app_components_searchbar_vue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/components/SearchBar.test.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "app_components_searchbar_test_ts",
+      "target": "components_searchbar_test_setup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/components/SearchBar.test.ts",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "app_components_searchbar_test_ts",
+      "target": "components_searchbar_test_setdates",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/components/SearchBar.test.ts",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "app_components_searchbar_test_ts",
+      "target": "components_searchbar_test_wrapper",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/components/SearchBar.test.ts",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "app_components_searchbar_test_ts",
+      "target": "components_searchbar_test_start",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/components/SearchBar.test.ts",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "app_components_searchbar_test_ts",
+      "target": "components_searchbar_test_end",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/components/SearchBar.test.ts",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "app_components_searchbar_test_ts",
+      "target": "components_searchbar_test_emitted",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/components/SearchBar.test.ts",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "app_components_searchbar_test_ts",
+      "target": "components_searchbar_test_btn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/components/ListingGrid.vue",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "app_components_listinggrid_vue",
+      "target": "components_listinggrid_haserror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/components/ListingGrid.vue",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "app_components_listinggrid_vue",
+      "target": "components_listinggrid_listings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/components/ListingGrid.test.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_components_listinggrid_test_ts",
+      "target": "app_components_listinggrid_vue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/components/ListingGrid.test.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "app_components_listinggrid_test_ts",
+      "target": "app_types_listing_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/components/ListingGrid.test.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "app_components_listinggrid_test_ts",
+      "target": "types_listing_listing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/components/ListingGrid.test.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "app_components_listinggrid_test_ts",
+      "target": "components_listinggrid_test_mockusefetch",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/components/ListingGrid.test.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "app_components_listinggrid_test_ts",
+      "target": "components_listinggrid_test_listings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/components/ListingGrid.test.ts",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "app_components_listinggrid_test_ts",
+      "target": "components_listinggrid_test_stubfetch",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/components/ListingGrid.test.ts",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "app_components_listinggrid_test_ts",
+      "target": "components_listinggrid_test_wrapper",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/components/ListingCard.test.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "app_components_listingcard_test_ts",
+      "target": "app_components_listingcard_vue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/components/ListingCard.test.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_components_listingcard_test_ts",
+      "target": "app_types_listing_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/components/ListingCard.test.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_components_listingcard_test_ts",
+      "target": "types_listing_listing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/components/ListingCard.test.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_components_listingcard_test_ts",
+      "target": "components_listingcard_test_base",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/components/ListingCard.test.ts",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "app_components_listingcard_test_ts",
+      "target": "components_listingcard_test_wrapper",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/components/ListingCard.test.ts",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "app_components_listingcard_test_ts",
+      "target": "components_listingcard_test_listing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/types/search.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "app_types_search_ts",
+      "target": "types_search_searchparams",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/types/search.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "app_types_search_ts",
+      "target": "types_search_searchbaremits",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/types/listing.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "app_types_listing_ts",
+      "target": "types_listing_listing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/types/listing.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "app_types_listing_ts",
+      "target": "types_listing_listingcardprops",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/types/listing.ts",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "app_types_listing_ts",
+      "target": "types_listing_listingsresponse",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "nuxt.config.ts",
+      "source_location": "11",
+      "weight": 1.0,
+      "source": "nuxt_config",
+      "target": "usesupbase_composable"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "nuxt.config.ts",
+      "source_location": "2",
+      "weight": 1.0,
+      "source": "nuxt_config",
+      "target": "tailwind_config"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tailwind.config.ts",
+      "source_location": "1",
+      "weight": 1.0,
+      "source": "tailwind_config",
+      "target": "design_token_system"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/api/listings.get.ts",
+      "source_location": "5",
+      "weight": 1.0,
+      "source": "listings_get",
+      "target": "supabase_server_gap"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/components/ListingGrid.vue",
+      "source_location": "7",
+      "weight": 1.0,
+      "source": "listinggrid_vue",
+      "target": "listings_get"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "server/api/listings.get.ts",
+      "source_location": "1",
+      "weight": 1.0,
+      "source": "listings_get",
+      "target": "usesupbase_composable"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "app/components/ListingGrid.test.ts",
+      "source_location": "1",
+      "weight": 1.0,
+      "source": "listinggrid_test",
+      "target": "listings_get"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/app.vue",
+      "source_location": "3",
+      "weight": 1.0,
+      "source": "app_vue",
+      "target": "index_vue"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/composables/useSupabase.ts",
+      "source_location": "4",
+      "weight": 1.0,
+      "source": "usesupbase_composable",
+      "target": "supabase_server_gap"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/pages/index.vue",
+      "source_location": "48",
+      "weight": 1.0,
+      "source": "index_vue",
+      "target": "searchbar_vue"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/components/SearchBar.vue",
+      "source_location": "4",
+      "weight": 1.0,
+      "source": "searchbar_vue",
+      "target": "search_types"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/components/SearchBar.test.ts",
+      "source_location": "4",
+      "weight": 1.0,
+      "source": "searchbar_test",
+      "target": "searchbar_vue"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/components/SearchBar.vue",
+      "source_location": "1",
+      "weight": 1.0,
+      "source": "searchbar_vue",
+      "target": "design_token_system"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/components/ListingGrid.vue",
+      "source_location": "7",
+      "weight": 1.0,
+      "source": "listinggrid_vue",
+      "target": "listingcard_vue"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/pages/index.vue",
+      "source_location": "54",
+      "weight": 1.0,
+      "source": "index_vue",
+      "target": "listinggrid_vue"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/components/ListingGrid.test.ts",
+      "source_location": "4",
+      "weight": 1.0,
+      "source": "listinggrid_test",
+      "target": "listinggrid_vue"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/components/ListingCard.test.ts",
+      "source_location": "3",
+      "weight": 1.0,
+      "source": "listingcard_test",
+      "target": "listingcard_vue"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/components/ListingCard.vue",
+      "source_location": "1",
+      "weight": 1.0,
+      "source": "listingcard_vue",
+      "target": "design_token_system"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/pages/index.vue",
+      "source_location": "2",
+      "weight": 1.0,
+      "source": "index_vue",
+      "target": "search_types"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/components/SearchBar.vue",
+      "source_location": "46",
+      "weight": 1.0,
+      "source": "searchbar_handlesubmit",
+      "target": "searchbar_validate"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/types/listing.ts",
+      "source_location": "10-12",
+      "weight": 1.0,
+      "source": "listing_listingcardprops",
+      "target": "listing_listing"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/types/listing.ts",
+      "source_location": "14-16",
+      "weight": 1.0,
+      "source": "listing_listingsresponse",
+      "target": "listing_listing"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-001-listing-card.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "spec001_listingcard",
+      "target": "listing_listing"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-003-listing-grid.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "spec003_listinggrid",
+      "target": "listing_listing"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-001-listing-card.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "spec001_listingcard",
+      "target": "listing_listingcardprops"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-003-listing-grid.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "spec003_listinggrid",
+      "target": "listing_listingsresponse"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/CONSTITUTION.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "constitution_wayrest",
+      "target": "sdd_principle"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/CONSTITUTION.md",
+      "source_location": "18",
+      "weight": 1.0,
+      "source": "constitution_wayrest",
+      "target": "design_md_wayrest"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "specs/DESIGN.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "design_md_wayrest",
+      "target": "design_system_html"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "specs/DESIGN.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "design_md_wayrest",
+      "target": "ember_color_system"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "specs/DESIGN.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "design_md_wayrest",
+      "target": "pine_color_system"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "specs/CONSTITUTION.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sdd_principle",
+      "target": "spec_template"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-004-homepage.md",
+      "source_location": "5",
+      "weight": 1.0,
+      "source": "spec004_homepage",
+      "target": "design_system_html"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "specs/listing-detail.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "listing_detail_html",
+      "target": "design_system_html"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-003-listing-grid.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "spec003_listinggrid",
+      "target": "spec001_listingcard"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-004-homepage.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "spec004_homepage",
+      "target": "spec001_listingcard"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "specs/CONSTITUTION.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sdd_principle",
+      "target": "spec001_listingcard"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-004-homepage.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "spec004_homepage",
+      "target": "spec002_searchbar"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-002-search-bar.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "spec002_searchbar",
+      "target": "searchparams_interface"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "specs/CONSTITUTION.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sdd_principle",
+      "target": "spec002_searchbar"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-004-homepage.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "spec004_homepage",
+      "target": "spec003_listinggrid"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "specs/CONSTITUTION.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sdd_principle",
+      "target": "spec003_listinggrid"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "specs/CONSTITUTION.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sdd_principle",
+      "target": "spec004_homepage"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "specs/DESIGN.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "ember_color_system",
+      "target": "pine_color_system"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "search_flow",
+      "label": "Search Flow: SearchBar \u2192 SearchParams \u2192 index.vue handler",
+      "nodes": [
+        "searchbar_vue",
+        "search_types",
+        "index_vue",
+        "searchbar_handlesubmit"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/components/SearchBar.vue"
+    },
+    {
+      "id": "listing_display_pipeline",
+      "label": "Listing Display Pipeline: API \u2192 ListingGrid \u2192 ListingCard",
+      "nodes": [
+        "listings_get",
+        "listinggrid_vue",
+        "listingcard_vue"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/components/ListingGrid.vue"
+    },
+    {
+      "id": "supabase_initialization_pattern",
+      "label": "Supabase Initialization Pattern: runtimeConfig \u2192 createClient (server route vs composable)",
+      "nodes": [
+        "listings_get",
+        "usesupbase_composable",
+        "nuxt_config"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "server/api/listings.get.ts"
+    },
+    {
+      "id": "spec_driven_feature_flow",
+      "label": "Spec-Driven Development Feature Flow",
+      "nodes": [
+        "sdd_principle",
+        "spec_template",
+        "spec001_listingcard"
+      ],
+      "relation": "implement",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "specs/CONSTITUTION.md"
+    },
+    {
+      "id": "homepage_composition",
+      "label": "Homepage Component Composition",
+      "nodes": [
+        "spec004_homepage",
+        "spec002_searchbar",
+        "spec003_listinggrid"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-004-homepage.md"
+    },
+    {
+      "id": "listing_type_shared_data",
+      "label": "Listing Type Shared Across Components",
+      "nodes": [
+        "listing_listing",
+        "spec001_listingcard",
+        "spec003_listinggrid"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/types/listing.ts"
+    }
+  ],
+  "built_at_commit": "2cc468ca2ec58c1accefc4c9df0381c2fa2b7bb4"
+}
