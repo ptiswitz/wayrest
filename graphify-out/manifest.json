@@ -12,8 +12,24 @@
     "hash": "ceb82a8d312600a3576c753ef77d6451"
   },
   "/home/julien/projects/wayrest/server/api/listings.get.ts": {
-    "mtime": 1777843908.987733,
-    "hash": "5dead09e8bb5a363efe3a6597cfdef72"
+    "mtime": 1778347428.9731972,
+    "hash": "49abc693cf362f104aefb9afacf1cea9"
+  },
+  "/home/julien/projects/wayrest/server/api/stays/[slug].get.test.ts": {
+    "mtime": 1778347455.9894304,
+    "hash": "4fb5624f8611f0e302466a4f5c623d9d"
+  },
+  "/home/julien/projects/wayrest/server/api/stays/[slug].get.ts": {
+    "mtime": 1778348026.3424623,
+    "hash": "6914ccdfbc45b2e7f60f554bbfd7f783"
+  },
+  "/home/julien/projects/wayrest/server/utils/slugify.ts": {
+    "mtime": 1778347416.0221317,
+    "hash": "7f971d18e81bbe9086217f4e2a155b84"
+  },
+  "/home/julien/projects/wayrest/server/utils/slugify.test.ts": {
+    "mtime": 1778347420.9474273,
+    "hash": "1bcae44d6d382f4a77ce99a86f270ef2"
   },
   "/home/julien/projects/wayrest/app/app.vue": {
     "mtime": 1778028332.9132636,
@@ -32,32 +48,44 @@
     "hash": "9152047b6fbe726294877c7d8311e6f6"
   },
   "/home/julien/projects/wayrest/app/components/ListingGrid.test.ts": {
-    "mtime": 1777843962.098648,
-    "hash": "5caae138d0d369172b6ebafc33dc0e83"
+    "mtime": 1778347500.80143,
+    "hash": "96ac27f03d61851aab0b813c0692b24c"
+  },
+  "/home/julien/projects/wayrest/app/components/AppHeader.vue": {
+    "mtime": 1778347463.4171247,
+    "hash": "2cd53dcddfa12a5909ac2ee6583471d2"
   },
   "/home/julien/projects/wayrest/app/components/SearchBar.vue": {
     "mtime": 1778341964.954644,
     "hash": "716b6c2bba713ca93abab3f90dff7c21"
   },
   "/home/julien/projects/wayrest/app/components/ListingCard.vue": {
-    "mtime": 1778342261.7927377,
-    "hash": "f6d137460db7b4f7d9f6d2fc99d71431"
+    "mtime": 1778347480.952188,
+    "hash": "146d490b47de3134efff625fb1f7c068"
   },
   "/home/julien/projects/wayrest/app/components/ListingCard.test.ts": {
-    "mtime": 1777837417.136426,
-    "hash": "a12caa6864951e7405d4e9e59ddd3307"
+    "mtime": 1778347495.238099,
+    "hash": "0c6be2e32647cd99044c196d210091c4"
   },
   "/home/julien/projects/wayrest/app/pages/index.vue": {
-    "mtime": 1778028465.8346698,
-    "hash": "7a406a957022680a58b96f8882193630"
+    "mtime": 1778347469.2664366,
+    "hash": "ec0c2ef98672647c7c82f98f01929a9a"
+  },
+  "/home/julien/projects/wayrest/app/pages/stays/[slug].vue": {
+    "mtime": 1778347733.3117042,
+    "hash": "448f1221d8047fe3128e4c85ac0d56cd"
+  },
+  "/home/julien/projects/wayrest/app/pages/stays/[slug].test.ts": {
+    "mtime": 1778347643.326498,
+    "hash": "695196ff35168dea62aff019d4ddc55c"
   },
   "/home/julien/projects/wayrest/app/types/search.ts": {
     "mtime": 1777838617.8797379,
     "hash": "b31b7089174ce2d86fa0b455cf7513dc"
   },
   "/home/julien/projects/wayrest/app/types/listing.ts": {
-    "mtime": 1777843867.053371,
-    "hash": "05463b3a1ca8a7aa7297d064fcf23914"
+    "mtime": 1778347216.1002064,
+    "hash": "ad3b64d0ebbe19d77c4df8cd7d1f6839"
   },
   "/home/julien/projects/wayrest/README.md": {
     "mtime": 1777610002.0,
@@ -90,6 +118,10 @@
   "/home/julien/projects/wayrest/specs/DESIGN.md": {
     "mtime": 1777844384.0290773,
     "hash": "76d7cec8238967b81a03115f5113158c"
+  },
+  "/home/julien/projects/wayrest/specs/features/SPEC-005-listing-detail.md": {
+    "mtime": 1778345774.448322,
+    "hash": "ebd9db4e4f7380cce706e0483cf09889"
   },
   "/home/julien/projects/wayrest/specs/features/SPEC-004-homepage.md": {
     "mtime": 1778026493.4142604,

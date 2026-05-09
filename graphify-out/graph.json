@@ -4,20 +4,6 @@
   "graph": {
     "hyperedges": [
       {
-        "id": "search_flow",
-        "label": "Search Flow: SearchBar \u2192 SearchParams \u2192 index.vue handler",
-        "nodes": [
-          "searchbar_vue",
-          "search_types",
-          "index_vue",
-          "searchbar_handlesubmit"
-        ],
-        "relation": "implement",
-        "confidence": "EXTRACTED",
-        "confidence_score": 1.0,
-        "source_file": "app/components/SearchBar.vue"
-      },
-      {
         "id": "listing_display_pipeline",
         "label": "Listing Display Pipeline: API \u2192 ListingGrid \u2192 ListingCard",
         "nodes": [
@@ -31,17 +17,18 @@
         "source_file": "app/components/ListingGrid.vue"
       },
       {
-        "id": "supabase_initialization_pattern",
-        "label": "Supabase Initialization Pattern: runtimeConfig \u2192 createClient (server route vs composable)",
+        "id": "search_flow",
+        "label": "Search Flow: SearchBar \u2192 SearchParams \u2192 index.vue handler",
         "nodes": [
-          "listings_get",
-          "usesupbase_composable",
-          "nuxt_config"
+          "searchbar_vue",
+          "search_types",
+          "index_vue",
+          "searchbar_handlesubmit"
         ],
-        "relation": "participate_in",
-        "confidence": "INFERRED",
-        "confidence_score": 0.85,
-        "source_file": "server/api/listings.get.ts"
+        "relation": "implement",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "app/components/SearchBar.vue"
       },
       {
         "id": "spec_driven_feature_flow",
@@ -70,17 +57,47 @@
         "source_file": "specs/features/SPEC-004-homepage.md"
       },
       {
-        "id": "listing_type_shared_data",
-        "label": "Listing Type Shared Across Components",
+        "id": "slug_routing_pipeline",
+        "label": "Slug-based Listing Detail Routing Pipeline",
+        "nodes": [
+          "slugify_slugify",
+          "slug_get_handler",
+          "slug_vue",
+          "listing_listingdetail"
+        ],
+        "relation": "implement",
+        "confidence": "INFERRED",
+        "confidence_score": 0.95,
+        "source_file": "specs/features/SPEC-005-listing-detail.md"
+      },
+      {
+        "id": "listing_type_system",
+        "label": "Listing Type System (Listing, ListingDetail, Image, Host, Responses)",
         "nodes": [
           "listing_listing",
-          "spec001_listingcard",
-          "spec003_listinggrid"
+          "listing_listingdetail",
+          "listing_listingimage",
+          "listing_host",
+          "listing_listingdetailresponse",
+          "listing_listingsresponse"
         ],
-        "relation": "participate_in",
+        "relation": "form",
         "confidence": "EXTRACTED",
         "confidence_score": 1.0,
         "source_file": "app/types/listing.ts"
+      },
+      {
+        "id": "supabase_server_api_pattern",
+        "label": "Supabase Direct Init Pattern in Server API Handlers",
+        "nodes": [
+          "listings_get_handler",
+          "slug_get_handler",
+          "spec_gap_supabase_init"
+        ],
+        "relation": "implement",
+        "confidence": "INFERRED",
+        "confidence_score": 0.95,
+        "source_file": "server/api/listings.get.ts"
       }
     ]
   },
@@ -91,7 +108,7 @@
       "source_file": "nuxt.config.ts",
       "source_location": "L1",
       "id": "nuxt_config_ts",
-      "community": 11,
+      "community": 12,
       "norm_label": "nuxt.config.ts"
     },
     {
@@ -100,7 +117,7 @@
       "source_file": "tailwind.config.ts",
       "source_location": "L1",
       "id": "tailwind_config_ts",
-      "community": 12,
+      "community": 13,
       "norm_label": "tailwind.config.ts"
     },
     {
@@ -109,7 +126,7 @@
       "source_file": "vitest.config.ts",
       "source_location": "L1",
       "id": "vitest_config_ts",
-      "community": 13,
+      "community": 14,
       "norm_label": "vitest.config.ts"
     },
     {
@@ -118,7 +135,7 @@
       "source_file": "server/api/listings.get.ts",
       "source_location": "L1",
       "id": "server_api_listings_get_ts",
-      "community": 6,
+      "community": 8,
       "norm_label": "listings.get.ts"
     },
     {
@@ -127,7 +144,7 @@
       "source_file": "server/api/listings.get.ts",
       "source_location": "L6",
       "id": "api_listings_get_config",
-      "community": 6,
+      "community": 8,
       "norm_label": "config"
     },
     {
@@ -136,7 +153,7 @@
       "source_file": "server/api/listings.get.ts",
       "source_location": "L7",
       "id": "api_listings_get_supabase",
-      "community": 6,
+      "community": 8,
       "norm_label": "supabase"
     },
     {
@@ -145,17 +162,179 @@
       "source_file": "server/api/listings.get.ts",
       "source_location": "L20",
       "id": "api_listings_get_listings",
-      "community": 6,
+      "community": 8,
       "norm_label": "listings"
     },
     {
       "label": "response",
       "file_type": "code",
       "source_file": "server/api/listings.get.ts",
-      "source_location": "L29",
+      "source_location": "L37",
       "id": "api_listings_get_response",
-      "community": 6,
+      "community": 8,
       "norm_label": "response"
+    },
+    {
+      "label": "[slug].get.test.ts",
+      "file_type": "code",
+      "source_file": "server/api/stays/[slug].get.test.ts",
+      "source_location": "L1",
+      "id": "server_api_stays_slug_get_test_ts",
+      "community": 2,
+      "norm_label": "[slug].get.test.ts"
+    },
+    {
+      "label": "mockGetRouterParam",
+      "file_type": "code",
+      "source_file": "server/api/stays/[slug].get.test.ts",
+      "source_location": "L4",
+      "id": "stays_slug_get_test_mockgetrouterparam",
+      "community": 2,
+      "norm_label": "mockgetrouterparam"
+    },
+    {
+      "label": "mockSingle",
+      "file_type": "code",
+      "source_file": "server/api/stays/[slug].get.test.ts",
+      "source_location": "L17",
+      "id": "stays_slug_get_test_mocksingle",
+      "community": 2,
+      "norm_label": "mocksingle"
+    },
+    {
+      "label": "mockEvent",
+      "file_type": "code",
+      "source_file": "server/api/stays/[slug].get.test.ts",
+      "source_location": "L31",
+      "id": "stays_slug_get_test_mockevent",
+      "community": 2,
+      "norm_label": "mockevent"
+    },
+    {
+      "label": "baseRow",
+      "file_type": "code",
+      "source_file": "server/api/stays/[slug].get.test.ts",
+      "source_location": "L33",
+      "id": "stays_slug_get_test_baserow",
+      "community": 2,
+      "norm_label": "baserow"
+    },
+    {
+      "label": "[slug].get.ts",
+      "file_type": "code",
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "L1",
+      "id": "server_api_stays_slug_get_ts",
+      "community": 2,
+      "norm_label": "[slug].get.ts"
+    },
+    {
+      "label": "RawImage",
+      "file_type": "code",
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "L5",
+      "id": "stays_slug_get_rawimage",
+      "community": 2,
+      "norm_label": "rawimage"
+    },
+    {
+      "label": "RawHost",
+      "file_type": "code",
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "L12",
+      "id": "stays_slug_get_rawhost",
+      "community": 2,
+      "norm_label": "rawhost"
+    },
+    {
+      "label": "RawListing",
+      "file_type": "code",
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "L18",
+      "id": "stays_slug_get_rawlisting",
+      "community": 2,
+      "norm_label": "rawlisting"
+    },
+    {
+      "label": "match",
+      "file_type": "code",
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "L40",
+      "id": "stays_slug_get_match",
+      "community": 2,
+      "norm_label": "match"
+    },
+    {
+      "label": "id",
+      "file_type": "code",
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "L43",
+      "id": "stays_slug_get_id",
+      "community": 2,
+      "norm_label": "id"
+    },
+    {
+      "label": "config",
+      "file_type": "code",
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "L44",
+      "id": "stays_slug_get_config",
+      "community": 2,
+      "norm_label": "config"
+    },
+    {
+      "label": "supabase",
+      "file_type": "code",
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "L45",
+      "id": "stays_slug_get_supabase",
+      "community": 2,
+      "norm_label": "supabase"
+    },
+    {
+      "label": "row",
+      "file_type": "code",
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "L57",
+      "id": "stays_slug_get_row",
+      "community": 2,
+      "norm_label": "row"
+    },
+    {
+      "label": "listing",
+      "file_type": "code",
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "L59",
+      "id": "stays_slug_get_listing",
+      "community": 2,
+      "norm_label": "listing"
+    },
+    {
+      "label": "slugify.ts",
+      "file_type": "code",
+      "source_file": "server/utils/slugify.ts",
+      "source_location": "L1",
+      "id": "server_utils_slugify_ts",
+      "community": 2,
+      "norm_label": "slugify.ts"
+    },
+    {
+      "label": "slugify()",
+      "file_type": "code",
+      "source_file": "server/utils/slugify.ts",
+      "source_location": "L1",
+      "id": "utils_slugify_slugify",
+      "community": 2,
+      "norm_label": "slugify()"
+    },
+    {
+      "label": "slugify.test.ts",
+      "file_type": "code",
+      "source_file": "server/utils/slugify.test.ts",
+      "source_location": "L1",
+      "id": "server_utils_slugify_test_ts",
+      "community": 2,
+      "norm_label": "slugify.test.ts"
     },
     {
       "label": "app.vue",
@@ -163,7 +342,7 @@
       "source_file": "app/app.vue",
       "source_location": "L1",
       "id": "app_app_vue",
-      "community": 14,
+      "community": 15,
       "norm_label": "app.vue"
     },
     {
@@ -172,7 +351,7 @@
       "source_file": "app/composables/useSupabase.ts",
       "source_location": "L1",
       "id": "app_composables_usesupabase_ts",
-      "community": 9,
+      "community": 10,
       "norm_label": "usesupabase.ts"
     },
     {
@@ -181,7 +360,7 @@
       "source_file": "app/composables/useSupabase.ts",
       "source_location": "L9",
       "id": "composables_usesupabase_usesupabase",
-      "community": 9,
+      "community": 10,
       "norm_label": "usesupabase()"
     },
     {
@@ -190,7 +369,7 @@
       "source_file": "app/components/SearchBar.test.ts",
       "source_location": "L1",
       "id": "app_components_searchbar_test_ts",
-      "community": 2,
+      "community": 5,
       "norm_label": "searchbar.test.ts"
     },
     {
@@ -199,7 +378,7 @@
       "source_file": "app/components/SearchBar.test.ts",
       "source_location": "L13",
       "id": "components_searchbar_test_setup",
-      "community": 2,
+      "community": 5,
       "norm_label": "setup()"
     },
     {
@@ -208,7 +387,7 @@
       "source_file": "app/components/SearchBar.test.ts",
       "source_location": "L20",
       "id": "components_searchbar_test_setdates",
-      "community": 2,
+      "community": 5,
       "norm_label": "setdates()"
     },
     {
@@ -217,7 +396,7 @@
       "source_file": "app/components/SearchBar.test.ts",
       "source_location": "L28",
       "id": "components_searchbar_test_wrapper",
-      "community": 2,
+      "community": 5,
       "norm_label": "wrapper"
     },
     {
@@ -226,7 +405,7 @@
       "source_file": "app/components/SearchBar.test.ts",
       "source_location": "L29",
       "id": "components_searchbar_test_start",
-      "community": 2,
+      "community": 5,
       "norm_label": "start"
     },
     {
@@ -235,7 +414,7 @@
       "source_file": "app/components/SearchBar.test.ts",
       "source_location": "L30",
       "id": "components_searchbar_test_end",
-      "community": 2,
+      "community": 5,
       "norm_label": "end"
     },
     {
@@ -244,7 +423,7 @@
       "source_file": "app/components/SearchBar.test.ts",
       "source_location": "L36",
       "id": "components_searchbar_test_emitted",
-      "community": 2,
+      "community": 5,
       "norm_label": "emitted"
     },
     {
@@ -253,7 +432,7 @@
       "source_file": "app/components/SearchBar.test.ts",
       "source_location": "L67",
       "id": "components_searchbar_test_btn",
-      "community": 2,
+      "community": 5,
       "norm_label": "btn"
     },
     {
@@ -262,7 +441,7 @@
       "source_file": "app/components/ListingGrid.vue",
       "source_location": "L1",
       "id": "app_components_listinggrid_vue",
-      "community": 4,
+      "community": 1,
       "norm_label": "listinggrid.vue"
     },
     {
@@ -271,7 +450,7 @@
       "source_file": "app/components/ListingGrid.vue",
       "source_location": "L10",
       "id": "components_listinggrid_haserror",
-      "community": 4,
+      "community": 1,
       "norm_label": "haserror"
     },
     {
@@ -280,7 +459,7 @@
       "source_file": "app/components/ListingGrid.vue",
       "source_location": "L11",
       "id": "components_listinggrid_listings",
-      "community": 4,
+      "community": 1,
       "norm_label": "listings"
     },
     {
@@ -289,7 +468,7 @@
       "source_file": "app/components/ListingGrid.test.ts",
       "source_location": "L1",
       "id": "app_components_listinggrid_test_ts",
-      "community": 4,
+      "community": 1,
       "norm_label": "listinggrid.test.ts"
     },
     {
@@ -298,35 +477,53 @@
       "source_file": "app/components/ListingGrid.test.ts",
       "source_location": "L7",
       "id": "components_listinggrid_test_mockusefetch",
-      "community": 4,
+      "community": 1,
       "norm_label": "mockusefetch"
+    },
+    {
+      "label": "listingBase",
+      "file_type": "code",
+      "source_file": "app/components/ListingGrid.test.ts",
+      "source_location": "L13",
+      "id": "components_listinggrid_test_listingbase",
+      "community": 1,
+      "norm_label": "listingbase"
     },
     {
       "label": "listings",
       "file_type": "code",
       "source_file": "app/components/ListingGrid.test.ts",
-      "source_location": "L13",
+      "source_location": "L24",
       "id": "components_listinggrid_test_listings",
-      "community": 4,
+      "community": 1,
       "norm_label": "listings"
     },
     {
       "label": "stubFetch()",
       "file_type": "code",
       "source_file": "app/components/ListingGrid.test.ts",
-      "source_location": "L18",
+      "source_location": "L29",
       "id": "components_listinggrid_test_stubfetch",
-      "community": 4,
+      "community": 1,
       "norm_label": "stubfetch()"
     },
     {
       "label": "wrapper",
       "file_type": "code",
       "source_file": "app/components/ListingGrid.test.ts",
-      "source_location": "L37",
+      "source_location": "L48",
       "id": "components_listinggrid_test_wrapper",
-      "community": 4,
+      "community": 1,
       "norm_label": "wrapper"
+    },
+    {
+      "label": "AppHeader.vue",
+      "file_type": "code",
+      "source_file": "app/components/AppHeader.vue",
+      "source_location": "L1",
+      "id": "app_components_appheader_vue",
+      "community": 16,
+      "norm_label": "appheader.vue"
     },
     {
       "label": "SearchBar.vue",
@@ -334,7 +531,7 @@
       "source_file": "app/components/SearchBar.vue",
       "source_location": "L1",
       "id": "app_components_searchbar_vue",
-      "community": 2,
+      "community": 5,
       "norm_label": "searchbar.vue"
     },
     {
@@ -343,7 +540,7 @@
       "source_file": "app/components/ListingCard.vue",
       "source_location": "L1",
       "id": "app_components_listingcard_vue",
-      "community": 3,
+      "community": 1,
       "norm_label": "listingcard.vue"
     },
     {
@@ -352,34 +549,52 @@
       "source_file": "app/components/ListingCard.test.ts",
       "source_location": "L1",
       "id": "app_components_listingcard_test_ts",
-      "community": 3,
+      "community": 1,
       "norm_label": "listingcard.test.ts"
+    },
+    {
+      "label": "NuxtLinkStub",
+      "file_type": "code",
+      "source_file": "app/components/ListingCard.test.ts",
+      "source_location": "L6",
+      "id": "components_listingcard_test_nuxtlinkstub",
+      "community": 1,
+      "norm_label": "nuxtlinkstub"
     },
     {
       "label": "base",
       "file_type": "code",
       "source_file": "app/components/ListingCard.test.ts",
-      "source_location": "L6",
+      "source_location": "L11",
       "id": "components_listingcard_test_base",
-      "community": 3,
+      "community": 1,
       "norm_label": "base"
+    },
+    {
+      "label": "globalStubs",
+      "file_type": "code",
+      "source_file": "app/components/ListingCard.test.ts",
+      "source_location": "L28",
+      "id": "components_listingcard_test_globalstubs",
+      "community": 1,
+      "norm_label": "globalstubs"
     },
     {
       "label": "wrapper",
       "file_type": "code",
       "source_file": "app/components/ListingCard.test.ts",
-      "source_location": "L17",
+      "source_location": "L32",
       "id": "components_listingcard_test_wrapper",
-      "community": 3,
+      "community": 1,
       "norm_label": "wrapper"
     },
     {
       "label": "listing",
       "file_type": "code",
       "source_file": "app/components/ListingCard.test.ts",
-      "source_location": "L27",
+      "source_location": "L42",
       "id": "components_listingcard_test_listing",
-      "community": 3,
+      "community": 1,
       "norm_label": "listing"
     },
     {
@@ -388,8 +603,107 @@
       "source_file": "app/pages/index.vue",
       "source_location": "L1",
       "id": "app_pages_index_vue",
-      "community": 15,
+      "community": 17,
       "norm_label": "index.vue"
+    },
+    {
+      "label": "[slug].vue",
+      "file_type": "code",
+      "source_file": "app/pages/stays/[slug].vue",
+      "source_location": "L1",
+      "id": "app_pages_stays_slug_vue",
+      "community": 4,
+      "norm_label": "[slug].vue"
+    },
+    {
+      "label": "[slug].test.ts",
+      "file_type": "code",
+      "source_file": "app/pages/stays/[slug].test.ts",
+      "source_location": "L1",
+      "id": "app_pages_stays_slug_test_ts",
+      "community": 4,
+      "norm_label": "[slug].test.ts"
+    },
+    {
+      "label": "mockUseFetch",
+      "file_type": "code",
+      "source_file": "app/pages/stays/[slug].test.ts",
+      "source_location": "L7",
+      "id": "stays_slug_test_mockusefetch",
+      "community": 4,
+      "norm_label": "mockusefetch"
+    },
+    {
+      "label": "mockUseRoute",
+      "file_type": "code",
+      "source_file": "app/pages/stays/[slug].test.ts",
+      "source_location": "L8",
+      "id": "stays_slug_test_mockuseroute",
+      "community": 4,
+      "norm_label": "mockuseroute"
+    },
+    {
+      "label": "listing",
+      "file_type": "code",
+      "source_file": "app/pages/stays/[slug].test.ts",
+      "source_location": "L15",
+      "id": "stays_slug_test_listing",
+      "community": 4,
+      "norm_label": "listing"
+    },
+    {
+      "label": "stubFetch()",
+      "file_type": "code",
+      "source_file": "app/pages/stays/[slug].test.ts",
+      "source_location": "L38",
+      "id": "stays_slug_test_stubfetch",
+      "community": 4,
+      "norm_label": "stubfetch()"
+    },
+    {
+      "label": "globalStubs",
+      "file_type": "code",
+      "source_file": "app/pages/stays/[slug].test.ts",
+      "source_location": "L44",
+      "id": "stays_slug_test_globalstubs",
+      "community": 4,
+      "norm_label": "globalstubs"
+    },
+    {
+      "label": "wrapper",
+      "file_type": "code",
+      "source_file": "app/pages/stays/[slug].test.ts",
+      "source_location": "L57",
+      "id": "stays_slug_test_wrapper",
+      "community": 4,
+      "norm_label": "wrapper"
+    },
+    {
+      "label": "hero",
+      "file_type": "code",
+      "source_file": "app/pages/stays/[slug].test.ts",
+      "source_location": "L69",
+      "id": "stays_slug_test_hero",
+      "community": 4,
+      "norm_label": "hero"
+    },
+    {
+      "label": "thumbnails",
+      "file_type": "code",
+      "source_file": "app/pages/stays/[slug].test.ts",
+      "source_location": "L79",
+      "id": "stays_slug_test_thumbnails",
+      "community": 4,
+      "norm_label": "thumbnails"
+    },
+    {
+      "label": "totalEl",
+      "file_type": "code",
+      "source_file": "app/pages/stays/[slug].test.ts",
+      "source_location": "L117",
+      "id": "stays_slug_test_totalel",
+      "community": 4,
+      "norm_label": "totalel"
     },
     {
       "label": "search.ts",
@@ -397,7 +711,7 @@
       "source_file": "app/types/search.ts",
       "source_location": "L1",
       "id": "app_types_search_ts",
-      "community": 8,
+      "community": 9,
       "norm_label": "search.ts"
     },
     {
@@ -406,7 +720,7 @@
       "source_file": "app/types/search.ts",
       "source_location": "L1",
       "id": "types_search_searchparams",
-      "community": 8,
+      "community": 9,
       "norm_label": "searchparams"
     },
     {
@@ -415,7 +729,7 @@
       "source_file": "app/types/search.ts",
       "source_location": "L8",
       "id": "types_search_searchbaremits",
-      "community": 8,
+      "community": 9,
       "norm_label": "searchbaremits"
     },
     {
@@ -424,7 +738,7 @@
       "source_file": "app/types/listing.ts",
       "source_location": "L1",
       "id": "app_types_listing_ts",
-      "community": 3,
+      "community": 1,
       "norm_label": "listing.ts"
     },
     {
@@ -433,26 +747,62 @@
       "source_file": "app/types/listing.ts",
       "source_location": "L1",
       "id": "types_listing_listing",
-      "community": 3,
+      "community": 1,
       "norm_label": "listing"
+    },
+    {
+      "label": "ListingImage",
+      "file_type": "code",
+      "source_file": "app/types/listing.ts",
+      "source_location": "L18",
+      "id": "types_listing_listingimage",
+      "community": 1,
+      "norm_label": "listingimage"
+    },
+    {
+      "label": "Host",
+      "file_type": "code",
+      "source_file": "app/types/listing.ts",
+      "source_location": "L25",
+      "id": "types_listing_host",
+      "community": 1,
+      "norm_label": "host"
+    },
+    {
+      "label": "ListingDetail",
+      "file_type": "code",
+      "source_file": "app/types/listing.ts",
+      "source_location": "L31",
+      "id": "types_listing_listingdetail",
+      "community": 1,
+      "norm_label": "listingdetail"
     },
     {
       "label": "ListingCardProps",
       "file_type": "code",
       "source_file": "app/types/listing.ts",
-      "source_location": "L10",
+      "source_location": "L36",
       "id": "types_listing_listingcardprops",
-      "community": 3,
+      "community": 1,
       "norm_label": "listingcardprops"
     },
     {
       "label": "ListingsResponse",
       "file_type": "code",
       "source_file": "app/types/listing.ts",
-      "source_location": "L14",
+      "source_location": "L40",
       "id": "types_listing_listingsresponse",
-      "community": 3,
+      "community": 1,
       "norm_label": "listingsresponse"
+    },
+    {
+      "label": "ListingDetailResponse",
+      "file_type": "code",
+      "source_file": "app/types/listing.ts",
+      "source_location": "L44",
+      "id": "types_listing_listingdetailresponse",
+      "community": 1,
+      "norm_label": "listingdetailresponse"
     },
     {
       "label": "Nuxt Config",
@@ -464,7 +814,7 @@
       "author": null,
       "contributor": null,
       "id": "nuxt_config",
-      "community": 0,
+      "community": 6,
       "norm_label": "nuxt config"
     },
     {
@@ -477,164 +827,8 @@
       "author": null,
       "contributor": null,
       "id": "tailwind_config",
-      "community": 0,
+      "community": 6,
       "norm_label": "tailwind config"
-    },
-    {
-      "label": "Vitest Config",
-      "file_type": "code",
-      "source_file": "vitest.config.ts",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "vitest_config",
-      "community": 16,
-      "norm_label": "vitest config"
-    },
-    {
-      "label": "Listings API Handler",
-      "file_type": "code",
-      "source_file": "server/api/listings.get.ts",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "listings_get",
-      "community": 0,
-      "norm_label": "listings api handler"
-    },
-    {
-      "label": "App Root Component",
-      "file_type": "code",
-      "source_file": "app/app.vue",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "app_vue",
-      "community": 7,
-      "norm_label": "app root component"
-    },
-    {
-      "label": "useSupabase Composable",
-      "file_type": "code",
-      "source_file": "app/composables/useSupabase.ts",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "usesupbase_composable",
-      "community": 0,
-      "norm_label": "usesupabase composable"
-    },
-    {
-      "label": "SearchBar Component",
-      "file_type": "code",
-      "source_file": "app/components/SearchBar.vue",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "searchbar_vue",
-      "community": 7,
-      "norm_label": "searchbar component"
-    },
-    {
-      "label": "SearchBar Tests",
-      "file_type": "code",
-      "source_file": "app/components/SearchBar.test.ts",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "searchbar_test",
-      "community": 7,
-      "norm_label": "searchbar tests"
-    },
-    {
-      "label": "ListingGrid Component",
-      "file_type": "code",
-      "source_file": "app/components/ListingGrid.vue",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "listinggrid_vue",
-      "community": 0,
-      "norm_label": "listinggrid component"
-    },
-    {
-      "label": "ListingGrid Tests",
-      "file_type": "code",
-      "source_file": "app/components/ListingGrid.test.ts",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "listinggrid_test",
-      "community": 0,
-      "norm_label": "listinggrid tests"
-    },
-    {
-      "label": "ListingCard Component",
-      "file_type": "code",
-      "source_file": "app/components/ListingCard.vue",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "listingcard_vue",
-      "community": 0,
-      "norm_label": "listingcard component"
-    },
-    {
-      "label": "ListingCard Tests",
-      "file_type": "code",
-      "source_file": "app/components/ListingCard.test.ts",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "listingcard_test",
-      "community": 0,
-      "norm_label": "listingcard tests"
-    },
-    {
-      "label": "Homepage Index Page",
-      "file_type": "code",
-      "source_file": "app/pages/index.vue",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "index_vue",
-      "community": 7,
-      "norm_label": "homepage index page"
-    },
-    {
-      "label": "Search Types (SearchParams, SearchBarEmits)",
-      "file_type": "code",
-      "source_file": "app/types/search.ts",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "search_types",
-      "community": 7,
-      "norm_label": "search types (searchparams, searchbaremits)"
     },
     {
       "label": "Wayrest Design Token System",
@@ -647,22 +841,86 @@
       "contributor": null,
       "rationale": "Tailwind v4 CSS-first approach preferred via @theme blocks; JS config retained for tooling compatibility (IDE plugins, legacy integrations). Tokens map 1:1 to DESIGN.md. Color palette uses Ember (primary), Pine (secondary), Parchment (neutral) \u2014 outdoor/journey aesthetic. Warm-tinted shadows use rgba(64,57,46,...) base.",
       "id": "design_token_system",
-      "community": 0,
+      "community": 6,
       "norm_label": "wayrest design token system"
     },
     {
-      "label": "Supabase Server-Only Config Gap",
-      "file_type": "rationale",
-      "source_file": "server/api/listings.get.ts",
+      "label": "Vitest Config",
+      "file_type": "code",
+      "source_file": "vitest.config.ts",
       "source_location": null,
       "source_url": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "rationale": "SPEC-GAP: server routes cannot import from app/composables, so Supabase is initialized directly in each server route. supabaseUrl/supabaseKey are server-only runtimeConfig \u2014 this works for SSR but not pure client-side. Future spec should move keys to runtimeConfig.public if direct client-side Supabase access is needed.",
-      "id": "supabase_server_gap",
+      "id": "vitest_config",
+      "community": 18,
+      "norm_label": "vitest config"
+    },
+    {
+      "label": "App Root Component",
+      "file_type": "code",
+      "source_file": "app/app.vue",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "app_vue",
       "community": 0,
-      "norm_label": "supabase server-only config gap"
+      "norm_label": "app root component"
+    },
+    {
+      "label": "useSupabase Composable",
+      "file_type": "code",
+      "source_file": "app/composables/useSupabase.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "usesupbase_composable",
+      "community": 6,
+      "norm_label": "usesupabase composable"
+    },
+    {
+      "label": "SearchBar Tests",
+      "file_type": "code",
+      "source_file": "app/components/SearchBar.test.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "searchbar_test",
+      "community": 6,
+      "norm_label": "searchbar tests"
+    },
+    {
+      "label": "ListingGrid Component",
+      "file_type": "code",
+      "source_file": "app/components/ListingGrid.vue",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "listinggrid_vue",
+      "community": 3,
+      "norm_label": "listinggrid component"
+    },
+    {
+      "label": "SearchBar Component",
+      "file_type": "code",
+      "source_file": "app/components/SearchBar.vue",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "searchbar_vue",
+      "community": 6,
+      "norm_label": "searchbar component"
     },
     {
       "label": "SearchBar.validate()",
@@ -674,7 +932,7 @@
       "author": null,
       "contributor": null,
       "id": "searchbar_validate",
-      "community": 10,
+      "community": 11,
       "norm_label": "searchbar.validate()"
     },
     {
@@ -687,47 +945,21 @@
       "author": null,
       "contributor": null,
       "id": "searchbar_handlesubmit",
-      "community": 10,
+      "community": 11,
       "norm_label": "searchbar.handlesubmit()"
     },
     {
-      "label": "Listing Interface",
+      "label": "Search Types (SearchParams, SearchBarEmits)",
       "file_type": "code",
-      "source_file": "app/types/listing.ts",
-      "source_location": "1-8",
+      "source_file": "app/types/search.ts",
+      "source_location": null,
       "source_url": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "listing_listing",
-      "community": 1,
-      "norm_label": "listing interface"
-    },
-    {
-      "label": "ListingCardProps Interface",
-      "file_type": "code",
-      "source_file": "app/types/listing.ts",
-      "source_location": "10-12",
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "listing_listingcardprops",
-      "community": 1,
-      "norm_label": "listingcardprops interface"
-    },
-    {
-      "label": "ListingsResponse Interface",
-      "file_type": "code",
-      "source_file": "app/types/listing.ts",
-      "source_location": "14-16",
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "listing_listingsresponse",
-      "community": 1,
-      "norm_label": "listingsresponse interface"
+      "id": "search_types",
+      "community": 6,
+      "norm_label": "search types (searchparams, searchbaremits)"
     },
     {
       "label": "Nuxt Minimal Starter README",
@@ -739,7 +971,7 @@
       "author": null,
       "contributor": null,
       "id": "readme_nuxt_starter",
-      "community": 17,
+      "community": 19,
       "norm_label": "nuxt minimal starter readme"
     },
     {
@@ -752,47 +984,8 @@
       "author": null,
       "contributor": null,
       "id": "claude_md_wayrest",
-      "community": 18,
+      "community": 20,
       "norm_label": "wayrest claude.md project instructions"
-    },
-    {
-      "label": "Wayrest Project Constitution",
-      "file_type": "document",
-      "source_file": "specs/CONSTITUTION.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "constitution_wayrest",
-      "community": 5,
-      "norm_label": "wayrest project constitution"
-    },
-    {
-      "label": "Wayrest Design System Documentation",
-      "file_type": "document",
-      "source_file": "specs/DESIGN.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "design_md_wayrest",
-      "community": 5,
-      "norm_label": "wayrest design system documentation"
-    },
-    {
-      "label": "Spec Template",
-      "file_type": "document",
-      "source_file": "specs/SPEC-TEMPLATE.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "spec_template",
-      "community": 1,
-      "norm_label": "spec template"
     },
     {
       "label": "Wayrest Design System HTML Reference",
@@ -804,73 +997,34 @@
       "author": null,
       "contributor": null,
       "id": "design_system_html",
-      "community": 5,
+      "community": 7,
       "norm_label": "wayrest design system html reference"
     },
     {
-      "label": "Listing Detail Page HTML Reference",
+      "label": "Spec Template",
       "file_type": "document",
-      "source_file": "specs/listing-detail.html",
+      "source_file": "specs/SPEC-TEMPLATE.md",
       "source_location": null,
       "source_url": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "listing_detail_html",
-      "community": 5,
-      "norm_label": "listing detail page html reference"
+      "id": "spec_template",
+      "community": 3,
+      "norm_label": "spec template"
     },
     {
-      "label": "SPEC-001 ListingCard Feature Spec",
+      "label": "Wayrest Project Constitution",
       "file_type": "document",
-      "source_file": "specs/features/SPEC-001-listing-card.md",
+      "source_file": "specs/CONSTITUTION.md",
       "source_location": null,
       "source_url": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "spec001_listingcard",
-      "community": 1,
-      "norm_label": "spec-001 listingcard feature spec"
-    },
-    {
-      "label": "SPEC-002 SearchBar Feature Spec",
-      "file_type": "document",
-      "source_file": "specs/features/SPEC-002-search-bar.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "spec002_searchbar",
-      "community": 1,
-      "norm_label": "spec-002 searchbar feature spec"
-    },
-    {
-      "label": "SPEC-003 ListingGrid Feature Spec",
-      "file_type": "document",
-      "source_file": "specs/features/SPEC-003-listing-grid.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "spec003_listinggrid",
-      "community": 1,
-      "norm_label": "spec-003 listinggrid feature spec"
-    },
-    {
-      "label": "SPEC-004 Homepage Feature Spec",
-      "file_type": "document",
-      "source_file": "specs/features/SPEC-004-homepage.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "spec004_homepage",
-      "community": 1,
-      "norm_label": "spec-004 homepage feature spec"
+      "id": "constitution_wayrest",
+      "community": 7,
+      "norm_label": "wayrest project constitution"
     },
     {
       "label": "Spec-Driven Development Methodology",
@@ -883,8 +1037,34 @@
       "contributor": null,
       "rationale": "Every feature is defined by a spec before being implemented by an AI coding agent. The spec is submitted, the agent asks questions before coding, delivered code is validated against the spec, and the spec is committed alongside the code as documentation. This ensures requirements are explicit and verifiable, preventing AI agents from making undocumented architecture decisions.",
       "id": "sdd_principle",
-      "community": 1,
+      "community": 3,
       "norm_label": "spec-driven development methodology"
+    },
+    {
+      "label": "Listing Detail Page HTML Reference",
+      "file_type": "document",
+      "source_file": "specs/listing-detail.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "listing_detail_html",
+      "community": 7,
+      "norm_label": "listing detail page html reference"
+    },
+    {
+      "label": "Wayrest Design System Documentation",
+      "file_type": "document",
+      "source_file": "specs/DESIGN.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "design_md_wayrest",
+      "community": 7,
+      "norm_label": "wayrest design system documentation"
     },
     {
       "label": "Ember Primary Color System",
@@ -897,7 +1077,7 @@
       "contributor": null,
       "rationale": "Ember (#C25A33) chosen as primary color to evoke lantern glow \u2014 a waypoint marker aesthetic. Used for CTAs, brand marks, selected states, and price emphasis. Color ramps designed for OKLCH-adjacent perceptual uniformity.",
       "id": "ember_color_system",
-      "community": 5,
+      "community": 7,
       "norm_label": "ember primary color system"
     },
     {
@@ -911,8 +1091,60 @@
       "contributor": null,
       "rationale": "Pine (#335E42) chosen as secondary color to evoke the trail at dusk. Used for trust signals (Superhost, verified), tertiary CTAs, success-adjacent states. Warm-grounded aesthetic pairing with Ember.",
       "id": "pine_color_system",
-      "community": 5,
+      "community": 7,
       "norm_label": "pine secondary color system"
+    },
+    {
+      "label": "SPEC-004 Homepage Feature Spec",
+      "file_type": "document",
+      "source_file": "specs/features/SPEC-004-homepage.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "spec004_homepage",
+      "community": 3,
+      "norm_label": "spec-004 homepage feature spec"
+    },
+    {
+      "label": "SPEC-003 ListingGrid Feature Spec",
+      "file_type": "document",
+      "source_file": "specs/features/SPEC-003-listing-grid.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "spec003_listinggrid",
+      "community": 3,
+      "norm_label": "spec-003 listinggrid feature spec"
+    },
+    {
+      "label": "SPEC-001 ListingCard Feature Spec",
+      "file_type": "document",
+      "source_file": "specs/features/SPEC-001-listing-card.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "spec001_listingcard",
+      "community": 3,
+      "norm_label": "spec-001 listingcard feature spec"
+    },
+    {
+      "label": "SPEC-002 SearchBar Feature Spec",
+      "file_type": "document",
+      "source_file": "specs/features/SPEC-002-search-bar.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "spec002_searchbar",
+      "community": 3,
+      "norm_label": "spec-002 searchbar feature spec"
     },
     {
       "label": "SearchParams Interface",
@@ -924,8 +1156,450 @@
       "author": null,
       "contributor": null,
       "id": "searchparams_interface",
-      "community": 1,
+      "community": 3,
       "norm_label": "searchparams interface"
+    },
+    {
+      "label": "Listing",
+      "file_type": "code",
+      "source_file": "app/types/listing.ts",
+      "source_location": "1-16",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "listing_listing",
+      "community": 3,
+      "norm_label": "listing"
+    },
+    {
+      "label": "ListingImage",
+      "file_type": "code",
+      "source_file": "app/types/listing.ts",
+      "source_location": "18-23",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "listing_listingimage",
+      "community": 0,
+      "norm_label": "listingimage"
+    },
+    {
+      "label": "Host",
+      "file_type": "code",
+      "source_file": "app/types/listing.ts",
+      "source_location": "25-29",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "listing_host",
+      "community": 0,
+      "norm_label": "host"
+    },
+    {
+      "label": "ListingDetail",
+      "file_type": "code",
+      "source_file": "app/types/listing.ts",
+      "source_location": "31-34",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "listing_listingdetail",
+      "community": 0,
+      "norm_label": "listingdetail"
+    },
+    {
+      "label": "ListingCardProps",
+      "file_type": "code",
+      "source_file": "app/types/listing.ts",
+      "source_location": "36-38",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "listing_listingcardprops",
+      "community": 3,
+      "norm_label": "listingcardprops"
+    },
+    {
+      "label": "ListingsResponse",
+      "file_type": "code",
+      "source_file": "app/types/listing.ts",
+      "source_location": "40-42",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "listing_listingsresponse",
+      "community": 3,
+      "norm_label": "listingsresponse"
+    },
+    {
+      "label": "ListingDetailResponse",
+      "file_type": "code",
+      "source_file": "app/types/listing.ts",
+      "source_location": "44-46",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "listing_listingdetailresponse",
+      "community": 0,
+      "norm_label": "listingdetailresponse"
+    },
+    {
+      "label": "GET /api/listings handler",
+      "file_type": "code",
+      "source_file": "server/api/listings.get.ts",
+      "source_location": "4-39",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "listings_get_handler",
+      "community": 0,
+      "norm_label": "get /api/listings handler"
+    },
+    {
+      "label": "GET /api/stays/[slug] handler",
+      "file_type": "code",
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "37-88",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "slug_get_handler",
+      "community": 0,
+      "norm_label": "get /api/stays/[slug] handler"
+    },
+    {
+      "label": "RawImage",
+      "file_type": "code",
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "5-10",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "slug_get_rawimage",
+      "community": 0,
+      "norm_label": "rawimage"
+    },
+    {
+      "label": "RawHost",
+      "file_type": "code",
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "12-16",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "slug_get_rawhost",
+      "community": 0,
+      "norm_label": "rawhost"
+    },
+    {
+      "label": "RawListing",
+      "file_type": "code",
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "18-35",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "slug_get_rawlisting",
+      "community": 0,
+      "norm_label": "rawlisting"
+    },
+    {
+      "label": "slugify(title, id)",
+      "file_type": "code",
+      "source_file": "server/utils/slugify.ts",
+      "source_location": "1-10",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "slugify_slugify",
+      "community": 0,
+      "norm_label": "slugify(title, id)"
+    },
+    {
+      "label": "slugify unit tests",
+      "file_type": "code",
+      "source_file": "server/utils/slugify.test.ts",
+      "source_location": "1-20",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "slugify_test_slugify",
+      "community": 0,
+      "norm_label": "slugify unit tests"
+    },
+    {
+      "label": "GET /api/stays/[slug] tests",
+      "file_type": "code",
+      "source_file": "server/api/stays/[slug].get.test.ts",
+      "source_location": "1-84",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "slug_get_test_handler",
+      "community": 0,
+      "norm_label": "get /api/stays/[slug] tests"
+    },
+    {
+      "label": "ListingCard component",
+      "file_type": "code",
+      "source_file": "app/components/ListingCard.vue",
+      "source_location": "1-55",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "listingcard_vue",
+      "community": 3,
+      "norm_label": "listingcard component"
+    },
+    {
+      "label": "onImageError()",
+      "file_type": "code",
+      "source_file": "app/components/ListingCard.vue",
+      "source_location": "8-11",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "listingcard_onimageerror",
+      "community": 3,
+      "norm_label": "onimageerror()"
+    },
+    {
+      "label": "ListingGrid component tests",
+      "file_type": "code",
+      "source_file": "app/components/ListingGrid.test.ts",
+      "source_location": "1-77",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "listinggrid_test",
+      "community": 3,
+      "norm_label": "listinggrid component tests"
+    },
+    {
+      "label": "ListingCard component tests",
+      "file_type": "code",
+      "source_file": "app/components/ListingCard.test.ts",
+      "source_location": "1-85",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "listingcard_test",
+      "community": 3,
+      "norm_label": "listingcard component tests"
+    },
+    {
+      "label": "AppHeader component",
+      "file_type": "code",
+      "source_file": "app/components/AppHeader.vue",
+      "source_location": "1-26",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "appheader_vue",
+      "community": 0,
+      "norm_label": "appheader component"
+    },
+    {
+      "label": "Homepage (index.vue)",
+      "file_type": "code",
+      "source_file": "app/pages/index.vue",
+      "source_location": "1-31",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_vue",
+      "community": 0,
+      "norm_label": "homepage (index.vue)"
+    },
+    {
+      "label": "Stay Detail Page ([slug].vue)",
+      "file_type": "code",
+      "source_file": "app/pages/stays/[slug].vue",
+      "source_location": "1-297",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "slug_vue",
+      "community": 0,
+      "norm_label": "stay detail page ([slug].vue)"
+    },
+    {
+      "label": "prevImage()",
+      "file_type": "code",
+      "source_file": "app/pages/stays/[slug].vue",
+      "source_location": "19-22",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "slug_vue_previmage",
+      "community": 0,
+      "norm_label": "previmage()"
+    },
+    {
+      "label": "nextImage()",
+      "file_type": "code",
+      "source_file": "app/pages/stays/[slug].vue",
+      "source_location": "24-26",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "slug_vue_nextimage",
+      "community": 0,
+      "norm_label": "nextimage()"
+    },
+    {
+      "label": "setActive(index)",
+      "file_type": "code",
+      "source_file": "app/pages/stays/[slug].vue",
+      "source_location": "28-30",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "slug_vue_setactive",
+      "community": 0,
+      "norm_label": "setactive(index)"
+    },
+    {
+      "label": "decreaseGuests()",
+      "file_type": "code",
+      "source_file": "app/pages/stays/[slug].vue",
+      "source_location": "40-42",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "slug_vue_decreaseguests",
+      "community": 0,
+      "norm_label": "decreaseguests()"
+    },
+    {
+      "label": "increaseGuests()",
+      "file_type": "code",
+      "source_file": "app/pages/stays/[slug].vue",
+      "source_location": "44-46",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "slug_vue_increaseguests",
+      "community": 0,
+      "norm_label": "increaseguests()"
+    },
+    {
+      "label": "getInitials(name)",
+      "file_type": "code",
+      "source_file": "app/pages/stays/[slug].vue",
+      "source_location": "57-61",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "slug_vue_getinitials",
+      "community": 0,
+      "norm_label": "getinitials(name)"
+    },
+    {
+      "label": "amenityIcon(name)",
+      "file_type": "code",
+      "source_file": "app/pages/stays/[slug].vue",
+      "source_location": "64-80",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "slug_vue_amenityicon",
+      "community": 0,
+      "norm_label": "amenityicon(name)"
+    },
+    {
+      "label": "Stay Detail Page tests",
+      "file_type": "code",
+      "source_file": "app/pages/stays/[slug].test.ts",
+      "source_location": "1-122",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "slug_vue_test",
+      "community": 0,
+      "norm_label": "stay detail page tests"
+    },
+    {
+      "label": "SPEC-005 Listing Detail Page",
+      "file_type": "document",
+      "source_file": "specs/features/SPEC-005-listing-detail.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "spec005_listing_detail",
+      "community": 0,
+      "norm_label": "spec-005 listing detail page"
+    },
+    {
+      "label": "Slug format: kebab-case-title-{id} for URL-safe, id-extractable routing",
+      "file_type": "rationale",
+      "source_file": "specs/features/SPEC-005-listing-detail.md",
+      "source_location": "57-64",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "slug_pattern_rationale",
+      "community": 0,
+      "norm_label": "slug format: kebab-case-title-{id} for url-safe, id-extractable routing"
+    },
+    {
+      "label": "SPEC-GAP: server routes cannot import from app/composables, so Supabase is initialized directly",
+      "file_type": "rationale",
+      "source_file": "server/api/listings.get.ts",
+      "source_location": "5",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "spec_gap_supabase_init",
+      "community": 0,
+      "norm_label": "spec-gap: server routes cannot import from app/composables, so supabase is initialized directly"
+    },
+    {
+      "label": "robots.txt",
+      "file_type": "document",
+      "source_file": "public/robots.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "robots_txt",
+      "community": 21,
+      "norm_label": "robots.txt"
     }
   ],
   "links": [
@@ -963,10 +1637,205 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "server/api/listings.get.ts",
-      "source_location": "L29",
+      "source_location": "L37",
       "weight": 1.0,
       "source": "server_api_listings_get_ts",
       "target": "api_listings_get_response",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/api/stays/[slug].get.test.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "server_api_stays_slug_get_test_ts",
+      "target": "stays_slug_get_test_mockgetrouterparam",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/api/stays/[slug].get.test.ts",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "server_api_stays_slug_get_test_ts",
+      "target": "stays_slug_get_test_mocksingle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/api/stays/[slug].get.test.ts",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "server_api_stays_slug_get_test_ts",
+      "target": "server_api_stays_slug_get_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/api/stays/[slug].get.test.ts",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "server_api_stays_slug_get_test_ts",
+      "target": "stays_slug_get_test_mockevent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/api/stays/[slug].get.test.ts",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "server_api_stays_slug_get_test_ts",
+      "target": "stays_slug_get_test_baserow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "server_api_stays_slug_get_ts",
+      "target": "server_utils_slugify_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "server_api_stays_slug_get_ts",
+      "target": "utils_slugify_slugify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "server_api_stays_slug_get_ts",
+      "target": "stays_slug_get_rawimage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "server_api_stays_slug_get_ts",
+      "target": "stays_slug_get_rawhost",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "server_api_stays_slug_get_ts",
+      "target": "stays_slug_get_rawlisting",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "server_api_stays_slug_get_ts",
+      "target": "stays_slug_get_match",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "server_api_stays_slug_get_ts",
+      "target": "stays_slug_get_id",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "server_api_stays_slug_get_ts",
+      "target": "stays_slug_get_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "server_api_stays_slug_get_ts",
+      "target": "stays_slug_get_supabase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "server_api_stays_slug_get_ts",
+      "target": "stays_slug_get_row",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "server_api_stays_slug_get_ts",
+      "target": "stays_slug_get_listing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/utils/slugify.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "server_utils_slugify_ts",
+      "target": "utils_slugify_slugify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/utils/slugify.test.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "server_utils_slugify_test_ts",
+      "target": "server_utils_slugify_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "server/utils/slugify.test.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "server_utils_slugify_test_ts",
+      "target": "utils_slugify_slugify",
       "confidence_score": 1.0
     },
     {
@@ -1130,6 +1999,16 @@
       "source_location": "L13",
       "weight": 1.0,
       "source": "app_components_listinggrid_test_ts",
+      "target": "components_listinggrid_test_listingbase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/components/ListingGrid.test.ts",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "app_components_listinggrid_test_ts",
       "target": "components_listinggrid_test_listings",
       "confidence_score": 1.0
     },
@@ -1137,7 +2016,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/components/ListingGrid.test.ts",
-      "source_location": "L18",
+      "source_location": "L29",
       "weight": 1.0,
       "source": "app_components_listinggrid_test_ts",
       "target": "components_listinggrid_test_stubfetch",
@@ -1147,7 +2026,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/components/ListingGrid.test.ts",
-      "source_location": "L63",
+      "source_location": "L74",
       "weight": 1.0,
       "source": "app_components_listinggrid_test_ts",
       "target": "components_listinggrid_test_wrapper",
@@ -1193,6 +2072,16 @@
       "source_location": "L6",
       "weight": 1.0,
       "source": "app_components_listingcard_test_ts",
+      "target": "components_listingcard_test_nuxtlinkstub",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/components/ListingCard.test.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "app_components_listingcard_test_ts",
       "target": "components_listingcard_test_base",
       "confidence_score": 1.0
     },
@@ -1200,7 +2089,17 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/components/ListingCard.test.ts",
-      "source_location": "L57",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "app_components_listingcard_test_ts",
+      "target": "components_listingcard_test_globalstubs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/components/ListingCard.test.ts",
+      "source_location": "L81",
       "weight": 1.0,
       "source": "app_components_listingcard_test_ts",
       "target": "components_listingcard_test_wrapper",
@@ -1210,10 +2109,111 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/components/ListingCard.test.ts",
-      "source_location": "L27",
+      "source_location": "L42",
       "weight": 1.0,
       "source": "app_components_listingcard_test_ts",
       "target": "components_listingcard_test_listing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/pages/stays/[slug].test.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_pages_stays_slug_test_ts",
+      "target": "app_pages_stays_slug_vue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/pages/stays/[slug].test.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "app_pages_stays_slug_test_ts",
+      "target": "stays_slug_test_mockusefetch",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/pages/stays/[slug].test.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "app_pages_stays_slug_test_ts",
+      "target": "stays_slug_test_mockuseroute",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/pages/stays/[slug].test.ts",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "app_pages_stays_slug_test_ts",
+      "target": "stays_slug_test_listing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/pages/stays/[slug].test.ts",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "app_pages_stays_slug_test_ts",
+      "target": "stays_slug_test_stubfetch",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/pages/stays/[slug].test.ts",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "app_pages_stays_slug_test_ts",
+      "target": "stays_slug_test_globalstubs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/pages/stays/[slug].test.ts",
+      "source_location": "L107",
+      "weight": 1.0,
+      "source": "app_pages_stays_slug_test_ts",
+      "target": "stays_slug_test_wrapper",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/pages/stays/[slug].test.ts",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "app_pages_stays_slug_test_ts",
+      "target": "stays_slug_test_hero",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/pages/stays/[slug].test.ts",
+      "source_location": "L79",
+      "weight": 1.0,
+      "source": "app_pages_stays_slug_test_ts",
+      "target": "stays_slug_test_thumbnails",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/pages/stays/[slug].test.ts",
+      "source_location": "L117",
+      "weight": 1.0,
+      "source": "app_pages_stays_slug_test_ts",
+      "target": "stays_slug_test_totalel",
       "confidence_score": 1.0
     },
     {
@@ -1250,7 +2250,37 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/types/listing.ts",
-      "source_location": "L10",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "app_types_listing_ts",
+      "target": "types_listing_listingimage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/types/listing.ts",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "app_types_listing_ts",
+      "target": "types_listing_host",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/types/listing.ts",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "app_types_listing_ts",
+      "target": "types_listing_listingdetail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/types/listing.ts",
+      "source_location": "L36",
       "weight": 1.0,
       "source": "app_types_listing_ts",
       "target": "types_listing_listingcardprops",
@@ -1260,10 +2290,20 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/types/listing.ts",
-      "source_location": "L14",
+      "source_location": "L40",
       "weight": 1.0,
       "source": "app_types_listing_ts",
       "target": "types_listing_listingsresponse",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/types/listing.ts",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "app_types_listing_ts",
+      "target": "types_listing_listingdetailresponse",
       "confidence_score": 1.0
     },
     {
@@ -1297,44 +2337,14 @@
       "target": "design_token_system"
     },
     {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "server/api/listings.get.ts",
-      "source_location": "5",
-      "weight": 1.0,
-      "source": "listings_get",
-      "target": "supabase_server_gap"
-    },
-    {
       "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/components/ListingGrid.vue",
-      "source_location": "7",
-      "weight": 1.0,
-      "source": "listinggrid_vue",
-      "target": "listings_get"
-    },
-    {
-      "relation": "semantically_similar_to",
       "confidence": "INFERRED",
       "confidence_score": 0.85,
-      "source_file": "server/api/listings.get.ts",
+      "source_file": "app/components/SearchBar.vue",
       "source_location": "1",
       "weight": 1.0,
-      "source": "listings_get",
-      "target": "usesupbase_composable"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.75,
-      "source_file": "app/components/ListingGrid.test.ts",
-      "source_location": "1",
-      "weight": 1.0,
-      "source": "listinggrid_test",
-      "target": "listings_get"
+      "source": "searchbar_vue",
+      "target": "design_token_system"
     },
     {
       "relation": "references",
@@ -1345,36 +2355,6 @@
       "weight": 1.0,
       "source": "app_vue",
       "target": "index_vue"
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/composables/useSupabase.ts",
-      "source_location": "4",
-      "weight": 1.0,
-      "source": "usesupbase_composable",
-      "target": "supabase_server_gap"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/pages/index.vue",
-      "source_location": "48",
-      "weight": 1.0,
-      "source": "index_vue",
-      "target": "searchbar_vue"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/components/SearchBar.vue",
-      "source_location": "4",
-      "weight": 1.0,
-      "source": "searchbar_vue",
-      "target": "search_types"
     },
     {
       "relation": "references",
@@ -1388,16 +2368,6 @@
     },
     {
       "relation": "references",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "app/components/SearchBar.vue",
-      "source_location": "1",
-      "weight": 1.0,
-      "source": "searchbar_vue",
-      "target": "design_token_system"
-    },
-    {
-      "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/components/ListingGrid.vue",
@@ -1410,50 +2380,10 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "app/pages/index.vue",
-      "source_location": "54",
-      "weight": 1.0,
-      "source": "index_vue",
-      "target": "listinggrid_vue"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/components/ListingGrid.test.ts",
+      "source_file": "app/components/SearchBar.vue",
       "source_location": "4",
       "weight": 1.0,
-      "source": "listinggrid_test",
-      "target": "listinggrid_vue"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/components/ListingCard.test.ts",
-      "source_location": "3",
-      "weight": 1.0,
-      "source": "listingcard_test",
-      "target": "listingcard_vue"
-    },
-    {
-      "relation": "references",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "app/components/ListingCard.vue",
-      "source_location": "1",
-      "weight": 1.0,
-      "source": "listingcard_vue",
-      "target": "design_token_system"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/pages/index.vue",
-      "source_location": "2",
-      "weight": 1.0,
-      "source": "index_vue",
+      "source": "searchbar_vue",
       "target": "search_types"
     },
     {
@@ -1467,64 +2397,44 @@
       "target": "searchbar_validate"
     },
     {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/types/listing.ts",
-      "source_location": "10-12",
-      "weight": 1.0,
-      "source": "listing_listingcardprops",
-      "target": "listing_listing"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/types/listing.ts",
-      "source_location": "14-16",
-      "weight": 1.0,
-      "source": "listing_listingsresponse",
-      "target": "listing_listing"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "specs/features/SPEC-001-listing-card.md",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "specs/listing-detail.html",
       "source_location": null,
       "weight": 1.0,
-      "source": "spec001_listingcard",
-      "target": "listing_listing"
+      "source": "listing_detail_html",
+      "target": "design_system_html"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "specs/DESIGN.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "design_md_wayrest",
+      "target": "design_system_html"
     },
     {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "specs/features/SPEC-003-listing-grid.md",
-      "source_location": null,
+      "source_file": "specs/features/SPEC-004-homepage.md",
+      "source_location": "5",
       "weight": 1.0,
-      "source": "spec003_listinggrid",
-      "target": "listing_listing"
+      "source": "spec004_homepage",
+      "target": "design_system_html"
     },
     {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "specs/features/SPEC-001-listing-card.md",
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "specs/CONSTITUTION.md",
       "source_location": null,
       "weight": 1.0,
-      "source": "spec001_listingcard",
-      "target": "listing_listingcardprops"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "specs/features/SPEC-003-listing-grid.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "spec003_listinggrid",
-      "target": "listing_listingsresponse"
+      "source": "sdd_principle",
+      "target": "spec_template"
     },
     {
       "relation": "conceptually_related_to",
@@ -1547,86 +2457,6 @@
       "target": "design_md_wayrest"
     },
     {
-      "relation": "semantically_similar_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "specs/DESIGN.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "design_md_wayrest",
-      "target": "design_system_html"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "specs/DESIGN.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "design_md_wayrest",
-      "target": "ember_color_system"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "specs/DESIGN.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "design_md_wayrest",
-      "target": "pine_color_system"
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "specs/CONSTITUTION.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "sdd_principle",
-      "target": "spec_template"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "specs/features/SPEC-004-homepage.md",
-      "source_location": "5",
-      "weight": 1.0,
-      "source": "spec004_homepage",
-      "target": "design_system_html"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "specs/listing-detail.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "listing_detail_html",
-      "target": "design_system_html"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "specs/features/SPEC-003-listing-grid.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "spec003_listinggrid",
-      "target": "spec001_listingcard"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "specs/features/SPEC-004-homepage.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "spec004_homepage",
-      "target": "spec001_listingcard"
-    },
-    {
       "relation": "rationale_for",
       "confidence": "INFERRED",
       "confidence_score": 0.85,
@@ -1635,26 +2465,6 @@
       "weight": 1.0,
       "source": "sdd_principle",
       "target": "spec001_listingcard"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "specs/features/SPEC-004-homepage.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "spec004_homepage",
-      "target": "spec002_searchbar"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "specs/features/SPEC-002-search-bar.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "spec002_searchbar",
-      "target": "searchparams_interface"
     },
     {
       "relation": "rationale_for",
@@ -1665,16 +2475,6 @@
       "weight": 1.0,
       "source": "sdd_principle",
       "target": "spec002_searchbar"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "specs/features/SPEC-004-homepage.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "spec004_homepage",
-      "target": "spec003_listinggrid"
     },
     {
       "relation": "rationale_for",
@@ -1697,6 +2497,26 @@
       "target": "spec004_homepage"
     },
     {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "specs/DESIGN.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "design_md_wayrest",
+      "target": "ember_color_system"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "specs/DESIGN.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "design_md_wayrest",
+      "target": "pine_color_system"
+    },
+    {
       "relation": "semantically_similar_to",
       "confidence": "INFERRED",
       "confidence_score": 0.75,
@@ -1705,23 +2525,609 @@
       "weight": 1.0,
       "source": "ember_color_system",
       "target": "pine_color_system"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-004-homepage.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "spec004_homepage",
+      "target": "spec001_listingcard"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-004-homepage.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "spec004_homepage",
+      "target": "spec002_searchbar"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-004-homepage.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "spec004_homepage",
+      "target": "spec003_listinggrid"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-003-listing-grid.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "spec003_listinggrid",
+      "target": "listing_listingsresponse"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-003-listing-grid.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "spec003_listinggrid",
+      "target": "listing_listing"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-003-listing-grid.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "spec003_listinggrid",
+      "target": "spec001_listingcard"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-001-listing-card.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "spec001_listingcard",
+      "target": "listing_listing"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-001-listing-card.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "spec001_listingcard",
+      "target": "listing_listingcardprops"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-002-search-bar.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "spec002_searchbar",
+      "target": "searchparams_interface"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/types/listing.ts",
+      "source_location": "31",
+      "weight": 1.0,
+      "source": "listing_listingdetail",
+      "target": "listing_listing"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/types/listing.ts",
+      "source_location": "37",
+      "weight": 1.0,
+      "source": "listing_listingcardprops",
+      "target": "listing_listing"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/types/listing.ts",
+      "source_location": "41",
+      "weight": 1.0,
+      "source": "listing_listingsresponse",
+      "target": "listing_listing"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/api/listings.get.ts",
+      "source_location": "20-35",
+      "weight": 1.0,
+      "source": "listings_get_handler",
+      "target": "listing_listing"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/components/ListingGrid.test.ts",
+      "source_location": "5",
+      "weight": 1.0,
+      "source": "listinggrid_test",
+      "target": "listing_listing"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/components/ListingCard.test.ts",
+      "source_location": "4",
+      "weight": 1.0,
+      "source": "listingcard_test",
+      "target": "listing_listing"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "slug_get_rawlisting",
+      "target": "listing_listing"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/types/listing.ts",
+      "source_location": "32",
+      "weight": 1.0,
+      "source": "listing_listingdetail",
+      "target": "listing_listingimage"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "slug_get_rawimage",
+      "target": "listing_listingimage"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/types/listing.ts",
+      "source_location": "33",
+      "weight": 1.0,
+      "source": "listing_listingdetail",
+      "target": "listing_host"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "slug_get_rawhost",
+      "target": "listing_host"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/types/listing.ts",
+      "source_location": "45",
+      "weight": 1.0,
+      "source": "listing_listingdetailresponse",
+      "target": "listing_listingdetail"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "59-85",
+      "weight": 1.0,
+      "source": "slug_get_handler",
+      "target": "listing_listingdetail"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/pages/stays/[slug].test.ts",
+      "source_location": "5",
+      "weight": 1.0,
+      "source": "slug_vue_test",
+      "target": "listing_listingdetail"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-005-listing-detail.md",
+      "source_location": "44-53",
+      "weight": 1.0,
+      "source": "spec005_listing_detail",
+      "target": "listing_listingdetail"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/components/ListingCard.vue",
+      "source_location": "3-5",
+      "weight": 1.0,
+      "source": "listingcard_vue",
+      "target": "listing_listingcardprops"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/api/listings.get.ts",
+      "source_location": "37",
+      "weight": 1.0,
+      "source": "listings_get_handler",
+      "target": "listing_listingsresponse"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "37",
+      "weight": 1.0,
+      "source": "slug_get_handler",
+      "target": "listing_listingdetailresponse"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/pages/stays/[slug].vue",
+      "source_location": "4",
+      "weight": 1.0,
+      "source": "slug_vue",
+      "target": "listing_listingdetailresponse"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/api/listings.get.ts",
+      "source_location": "5",
+      "weight": 1.0,
+      "source": "spec_gap_supabase_init",
+      "target": "listings_get_handler"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "server/api/listings.get.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "listings_get_handler",
+      "target": "slug_get_handler"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "app/pages/index.vue",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_vue",
+      "target": "listings_get_handler"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "66",
+      "weight": 1.0,
+      "source": "slug_get_handler",
+      "target": "slugify_slugify"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "57",
+      "weight": 1.0,
+      "source": "slug_get_handler",
+      "target": "slug_get_rawlisting"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/api/stays/[slug].get.test.ts",
+      "source_location": "29",
+      "weight": 1.0,
+      "source": "slug_get_test_handler",
+      "target": "slug_get_handler"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-005-listing-detail.md",
+      "source_location": "71",
+      "weight": 1.0,
+      "source": "spec005_listing_detail",
+      "target": "slug_get_handler"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "specs/features/SPEC-005-listing-detail.md",
+      "source_location": "67-74",
+      "weight": 1.0,
+      "source": "slug_pattern_rationale",
+      "target": "slug_get_handler"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "44-45",
+      "weight": 1.0,
+      "source": "spec_gap_supabase_init",
+      "target": "slug_get_handler"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "app/pages/stays/[slug].vue",
+      "source_location": "11",
+      "weight": 1.0,
+      "source": "slug_vue",
+      "target": "slug_get_handler"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "33",
+      "weight": 1.0,
+      "source": "slug_get_rawlisting",
+      "target": "slug_get_rawimage"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/api/stays/[slug].get.ts",
+      "source_location": "34",
+      "weight": 1.0,
+      "source": "slug_get_rawlisting",
+      "target": "slug_get_rawhost"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/utils/slugify.test.ts",
+      "source_location": "2",
+      "weight": 1.0,
+      "source": "slugify_test_slugify",
+      "target": "slugify_slugify"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-005-listing-detail.md",
+      "source_location": "63",
+      "weight": 1.0,
+      "source": "spec005_listing_detail",
+      "target": "slugify_slugify"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-005-listing-detail.md",
+      "source_location": "57-64",
+      "weight": 1.0,
+      "source": "slug_pattern_rationale",
+      "target": "slugify_slugify"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "server/utils/slugify.test.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "slugify_test_slugify",
+      "target": "slug_get_test_handler"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/components/ListingCard.vue",
+      "source_location": "22",
+      "weight": 1.0,
+      "source": "listingcard_vue",
+      "target": "listingcard_onimageerror"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/components/ListingCard.test.ts",
+      "source_location": "3",
+      "weight": 1.0,
+      "source": "listingcard_test",
+      "target": "listingcard_vue"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-005-listing-detail.md",
+      "source_location": "75-79",
+      "weight": 1.0,
+      "source": "spec005_listing_detail",
+      "target": "listingcard_vue"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "app/components/ListingCard.test.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "listingcard_test",
+      "target": "listinggrid_test"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/pages/index.vue",
+      "source_location": "11",
+      "weight": 1.0,
+      "source": "index_vue",
+      "target": "appheader_vue"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/pages/stays/[slug].vue",
+      "source_location": "84",
+      "weight": 1.0,
+      "source": "slug_vue",
+      "target": "appheader_vue"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-005-listing-detail.md",
+      "source_location": "86-88",
+      "weight": 1.0,
+      "source": "spec005_listing_detail",
+      "target": "appheader_vue"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/pages/stays/[slug].vue",
+      "source_location": "128",
+      "weight": 1.0,
+      "source": "slug_vue",
+      "target": "slug_vue_previmage"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/pages/stays/[slug].vue",
+      "source_location": "137",
+      "weight": 1.0,
+      "source": "slug_vue",
+      "target": "slug_vue_nextimage"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/pages/stays/[slug].vue",
+      "source_location": "161",
+      "weight": 1.0,
+      "source": "slug_vue",
+      "target": "slug_vue_setactive"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/pages/stays/[slug].vue",
+      "source_location": "253",
+      "weight": 1.0,
+      "source": "slug_vue",
+      "target": "slug_vue_decreaseguests"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/pages/stays/[slug].vue",
+      "source_location": "264",
+      "weight": 1.0,
+      "source": "slug_vue",
+      "target": "slug_vue_increaseguests"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/pages/stays/[slug].vue",
+      "source_location": "195",
+      "weight": 1.0,
+      "source": "slug_vue",
+      "target": "slug_vue_getinitials"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/pages/stays/[slug].vue",
+      "source_location": "221",
+      "weight": 1.0,
+      "source": "slug_vue",
+      "target": "slug_vue_amenityicon"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/pages/stays/[slug].test.ts",
+      "source_location": "4",
+      "weight": 1.0,
+      "source": "slug_vue_test",
+      "target": "slug_vue"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "specs/features/SPEC-005-listing-detail.md",
+      "source_location": "67",
+      "weight": 1.0,
+      "source": "spec005_listing_detail",
+      "target": "slug_vue"
     }
   ],
   "hyperedges": [
-    {
-      "id": "search_flow",
-      "label": "Search Flow: SearchBar \u2192 SearchParams \u2192 index.vue handler",
-      "nodes": [
-        "searchbar_vue",
-        "search_types",
-        "index_vue",
-        "searchbar_handlesubmit"
-      ],
-      "relation": "implement",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/components/SearchBar.vue"
-    },
     {
       "id": "listing_display_pipeline",
       "label": "Listing Display Pipeline: API \u2192 ListingGrid \u2192 ListingCard",
@@ -1736,17 +3142,18 @@
       "source_file": "app/components/ListingGrid.vue"
     },
     {
-      "id": "supabase_initialization_pattern",
-      "label": "Supabase Initialization Pattern: runtimeConfig \u2192 createClient (server route vs composable)",
+      "id": "search_flow",
+      "label": "Search Flow: SearchBar \u2192 SearchParams \u2192 index.vue handler",
       "nodes": [
-        "listings_get",
-        "usesupbase_composable",
-        "nuxt_config"
+        "searchbar_vue",
+        "search_types",
+        "index_vue",
+        "searchbar_handlesubmit"
       ],
-      "relation": "participate_in",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "server/api/listings.get.ts"
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/components/SearchBar.vue"
     },
     {
       "id": "spec_driven_feature_flow",
@@ -1775,18 +3182,48 @@
       "source_file": "specs/features/SPEC-004-homepage.md"
     },
     {
-      "id": "listing_type_shared_data",
-      "label": "Listing Type Shared Across Components",
+      "id": "slug_routing_pipeline",
+      "label": "Slug-based Listing Detail Routing Pipeline",
+      "nodes": [
+        "slugify_slugify",
+        "slug_get_handler",
+        "slug_vue",
+        "listing_listingdetail"
+      ],
+      "relation": "implement",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "specs/features/SPEC-005-listing-detail.md"
+    },
+    {
+      "id": "listing_type_system",
+      "label": "Listing Type System (Listing, ListingDetail, Image, Host, Responses)",
       "nodes": [
         "listing_listing",
-        "spec001_listingcard",
-        "spec003_listinggrid"
+        "listing_listingdetail",
+        "listing_listingimage",
+        "listing_host",
+        "listing_listingdetailresponse",
+        "listing_listingsresponse"
       ],
-      "relation": "participate_in",
+      "relation": "form",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/types/listing.ts"
+    },
+    {
+      "id": "supabase_server_api_pattern",
+      "label": "Supabase Direct Init Pattern in Server API Handlers",
+      "nodes": [
+        "listings_get_handler",
+        "slug_get_handler",
+        "spec_gap_supabase_init"
+      ],
+      "relation": "implement",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "server/api/listings.get.ts"
     }
   ],
-  "built_at_commit": "2cc468ca2ec58c1accefc4c9df0381c2fa2b7bb4"
+  "built_at_commit": "7438d9cf8688c9b9c9a5c6bf72569c0820f1acdb"
 }
