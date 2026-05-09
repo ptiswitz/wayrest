@@ -16,7 +16,7 @@ const isEmpty = computed(() => !isLoading.value && !hasError.value && listings.v
   <div class="@container" data-testid="listing-grid">
     <div
       v-if="isLoading"
-      class="grid grid-cols-1 @[640px]:grid-cols-2 @[1024px]:grid-cols-3 @[1280px]:grid-cols-4 gap-4"
+      class="grid grid-cols-1 @[640px]:grid-cols-2 @[1024px]:grid-cols-3 @[1280px]:grid-cols-4 gap-6"
       data-testid="skeleton-grid"
     >
       <div
@@ -46,7 +46,7 @@ const isEmpty = computed(() => !isLoading.value && !hasError.value && listings.v
     </p>
     <div
       v-else
-      class="grid grid-cols-1 @[640px]:grid-cols-2 @[1024px]:grid-cols-3 @[1280px]:grid-cols-4 gap-4"
+      class="grid grid-cols-1 @[640px]:grid-cols-2 @[1024px]:grid-cols-3 @[1280px]:grid-cols-4 gap-6"
       data-testid="listing-cards-grid"
     >
       <ListingCard

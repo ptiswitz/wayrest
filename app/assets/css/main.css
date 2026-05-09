@@ -1,2 +1,30 @@
 @import "tailwindcss";
 @config '../../../tailwind.config.ts';
+
+.dp__theme_light {
+  --dp-background-color: #FFFFFF;        /* surface */
+  --dp-text-color: #18140F;              /* text */
+  --dp-hover-color: #F2EDE4;             /* surface-sunken */
+  --dp-hover-text-color: #18140F;        /* text */
+  --dp-primary-color: #C25A33;           /* primary */
+  --dp-primary-text-color: #FFFFFF;
+  --dp-secondary-color: #CFC4B2;         /* border-strong */
+  --dp-border-color: #FFFFFF;            /* border */
+  --dp-menu-border-color: #E5DDD0;       /* border */
+  --dp-border-color-hover: #FFFFFF;      /* border-strong */
+  --dp-border-color-focus: #C25A33;      /* primary */
+  --dp-disabled-color: #F2EDE4;
+  --dp-disabled-color-text: #80735E;     /* text-subtle */
+  --dp-icon-color: #80735E;              /* text-subtle */
+  --dp-highlight-color: rgb(194 90 51 / 10%); /* primary 10% */
+  --dp-range-between-dates-background-color: #F2EDE4;
+  --dp-range-between-dates-text-color: #18140F;
+  --dp-border-radius: 10px;              /* rounded-md */
+  --dp-font-family: 'Inter', sans-serif;
+  --dp-font-size: 0.875rem;              /* text-sm */
+}
+
+.dp__input_focus {
+    border-color: transparent;
+    outline: 2px solid var(--dp-border-color-focus);
+}

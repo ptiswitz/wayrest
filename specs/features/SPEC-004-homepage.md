@@ -35,7 +35,10 @@ tokens — no inline styles, no vanilla CSS.
 
 ## SearchBar
 - bg-surface rounded-xl shadow-lg p-4
-- Layout: flex flex-col lg:flex-row gap-3
+- Layout: flex flex-col lg:flex-row lg:items-end gap-3
+- Destination field: flex-1
+- Dates field: flex-1
+- Guests field: flex-shrink-0
 - Each field:
   - Label: text-xs font-medium text-neutral-800 mb-1
   - Input: w-full border border-strong rounded-md px-3 py-2 
@@ -45,7 +48,7 @@ tokens — no inline styles, no vanilla CSS.
   - Minus/Plus buttons: w-8 h-8 rounded-full border 
     border-border flex items-center justify-center
     hover:border-border-strong disabled:opacity-40
-- Search button: w-full lg:w-auto bg-primary text-white 
+- Search button: flex-shrink-0 w-full lg:w-auto bg-primary text-white 
   px-6 py-2.5 rounded-md font-medium 
   hover:bg-primary-600 transition-colors
 
@@ -65,9 +68,11 @@ tokens — no inline styles, no vanilla CSS.
 - shadow-sm hover:shadow-lg hover:-translate-y-0.5 
   transition-all duration-200
 - No border
-- Image: w-full aspect-[4/3] object-cover
-- Placeholder: bg-neutral-100 flex items-center 
-  justify-center text-neutral-400
+- Image wrapper: aspect-[4/3] bg-neutral-100
+  [SPEC-GAP resolved: aspect-[4/3] on wrapper div, not img, so placeholder 
+   renders at correct ratio when no image source is present]
+- Image (when present): w-full h-full object-cover
+- Placeholder: w-full h-full flex items-center justify-center text-neutral-400
 - Body: p-3
   - Title: font-display text-base font-semibold text-text 
     line-clamp-2 mb-1

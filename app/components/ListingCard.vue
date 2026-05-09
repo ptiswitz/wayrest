@@ -12,16 +12,17 @@ function onImageError() {
 </script>
 
 <template>
-  <div class="rounded-lg overflow-hidden bg-surface shadow-md cursor-pointer transition-all duration-base ease-out hover:-translate-y-0.5 hover:shadow-lg">
-    <div class="aspect-[4/3] bg-neutral-100">
+  <div class="cursor-pointer">
+    <!-- SPEC-GAP: aspect-[4/3] on wrapper (not img) so placeholder renders at correct ratio without a src -->
+    <div class="aspect-[4/3]">
       <img
         v-if="listing.imageUrl && !hasError"
         :src="listing.imageUrl"
         :alt="listing.title"
-        class="w-full h-full object-cover"
+        class="rounded-lg w-full h-full object-cover shadow-sm transition-all duration-base ease-out hover:-translate-y-0.5 hover:shadow-lg"
         @error="onImageError"
       />
-      <!-- SPEC-GAP: placeholder visual design (colors, icon size) not specified → neutral gray with centered icon -->
+      <!-- placeholder visual design: neutral gray with centered icon -->
       <div
         v-else
         data-testid="placeholder"
@@ -44,13 +45,12 @@ function onImageError() {
         </svg>
       </div>
     </div>
-    <!-- SPEC-GAP: card padding and text sizing not specified → p-3 / text-sm -->
-    <div class="p-5 flex flex-col gap-2">
-      <h2 data-testid="title" class="font-display font-medium text-lg tracking-tighter line-clamp-2">
+    <div class="py-3 flex flex-col">
+      <h2 data-testid="title" class="font-display text-base font-semibold text-text line-clamp-2 mb-1">
         {{ listing.title }}
       </h2>
-      <p class="text-sm text-text-muted">{{ listing.city }}, {{ listing.country }}</p>
-      <p class="text-sm text-text-muted">{{ listing.pricePerNight }} $ / night</p>
+      <p class="text-sm text-text-muted mb-1">{{ listing.city }}, {{ listing.country }}</p>
+      <p class="text-sm font-medium text-text">{{ listing.pricePerNight }} $ / night</p>
     </div>
   </div>
 </template>
