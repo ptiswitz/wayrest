@@ -45,6 +45,8 @@ const baseRow = {
   bathrooms: 2,
   amenities: ['wifi', 'parking'],
   host_id: 10,
+  cleaning_fee: 45,
+  service_fee_percent: 10,
   listing_images: [
     { id: 1, listing_id: 1, url: 'https://example.com/1.jpg', position: 0 },
     { id: 2, listing_id: 1, url: 'https://example.com/2.jpg', position: 1 },

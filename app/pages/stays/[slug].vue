@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ref, computed, watch, nextTick } from 'vue'
-import { useFetch, useRoute } from '#app'
+import { useFetch, useRoute, navigateTo } from '#app'
 import { VueDatePicker } from '@vuepic/vue-datepicker'
 import type { ListingDetailResponse } from '~/types/listing'
+import { useBookingStore } from '~/stores/booking'
 
 const route = useRoute()
 const slug = route.params.slug as string
@@ -52,6 +53,27 @@ const nights = computed(() => {
 })
 
 const totalPrice = computed(() => nights.value * listing.value.pricePerNight)
+
+const bookingStore = useBookingStore()
+
+function reserve() {
+  if (!listing.value || !dateRange.value?.[0] || !dateRange.value?.[1]) return
+  bookingStore.setParams({
+    listingId: listing.value.id,
+    slug: listing.value.slug,
+    startDate: dateRange.value[0],
+    endDate: dateRange.value[1],
+    guests: guests.value,
+    pricePerNight: listing.value.pricePerNight,
+    cleaningFee: listing.value.cleaningFee,
+    serviceFeePct: listing.value.serviceFeePercent,
+    imageUrl: listing.value.imageUrl,
+    title: listing.value.title,
+    city: listing.value.city,
+    country: listing.value.country,
+  })
+  navigateTo(`/booking/${listing.value.slug}/summary`)
+}
 
 // Host
 function getInitials(name: string): string {
@@ -272,10 +294,12 @@ function amenityIcon(name: string): string {
             </div>
           </div>
 
-          <!-- Reserve (placeholder) -->
+          <!-- Reserve -->
           <button
             type="button"
-            class="mt-6 bg-primary text-white w-full py-3 rounded-md font-medium text-base hover:bg-primary-600 transition-colors"
+            :disabled="!dateRange?.[0] || !dateRange?.[1]"
+            class="mt-6 bg-primary text-white w-full py-3 rounded-md font-medium text-base hover:bg-primary-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            @click="reserve"
           >
             Reserve
           </button>

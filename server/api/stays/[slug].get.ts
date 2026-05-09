@@ -30,6 +30,8 @@ interface RawListing {
   bathrooms: number
   amenities: string[] | null
   host_id: number | null
+  cleaning_fee: number
+  service_fee_percent: number
   listing_images: RawImage[]
   hosts: RawHost | null
 }
@@ -47,7 +49,7 @@ export default defineEventHandler(async (event): Promise<ListingDetailResponse> 
   const { data, error } = await supabase
     .from('listings')
     .select(
-      'id, title, city, country, price_per_night, image_url, slug, description, guests, bedrooms, beds, bathrooms, amenities, host_id, listing_images (id, listing_id, url, position), hosts (id, name, avatar_url)',
+      'id, title, city, country, price_per_night, image_url, slug, description, guests, bedrooms, beds, bathrooms, amenities, host_id, cleaning_fee, service_fee_percent, listing_images (id, listing_id, url, position), hosts (id, name, avatar_url)',
     )
     .eq('id', id)
     .single()
@@ -71,6 +73,8 @@ export default defineEventHandler(async (event): Promise<ListingDetailResponse> 
     bathrooms: row.bathrooms,
     amenities: row.amenities ?? [],
     hostId: row.host_id,
+    cleaningFee: row.cleaning_fee,
+    serviceFeePercent: row.service_fee_percent,
     images: (row.listing_images ?? [])
       .sort((a, b) => a.position - b.position)
       .map((img) => ({

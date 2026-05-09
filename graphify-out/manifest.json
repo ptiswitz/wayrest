@@ -1,27 +1,39 @@
 {
   "/home/julien/projects/wayrest/nuxt.config.ts": {
-    "mtime": 1778341589.8027432,
-    "hash": "483231b414862ef34202ea63176df147"
+    "mtime": 1778360350.686753,
+    "hash": "b27d15c7b7435dc2fbb097de3c7b503b"
   },
   "/home/julien/projects/wayrest/tailwind.config.ts": {
     "mtime": 1777846712.975284,
     "hash": "538c221443425061fada1318e2d43478"
   },
   "/home/julien/projects/wayrest/vitest.config.ts": {
-    "mtime": 1777843884.290266,
-    "hash": "ceb82a8d312600a3576c753ef77d6451"
+    "mtime": 1778361005.8346877,
+    "hash": "12f88b572cb49c3a0c4a5a4fe3f39059"
   },
   "/home/julien/projects/wayrest/server/api/listings.get.ts": {
     "mtime": 1778347428.9731972,
     "hash": "49abc693cf362f104aefb9afacf1cea9"
   },
+  "/home/julien/projects/wayrest/server/api/bookings.post.ts": {
+    "mtime": 1778360416.3454015,
+    "hash": "8ff1fdb6009aeb2d881ebd17bbfd1611"
+  },
+  "/home/julien/projects/wayrest/server/api/bookings.post.test.ts": {
+    "mtime": 1778360431.4466317,
+    "hash": "7523c31de67a2270c624b33071ec5276"
+  },
   "/home/julien/projects/wayrest/server/api/stays/[slug].get.test.ts": {
-    "mtime": 1778347455.9894304,
-    "hash": "4fb5624f8611f0e302466a4f5c623d9d"
+    "mtime": 1778360382.6648178,
+    "hash": "c8b1e71152b3961544c80adf1b11cfd5"
   },
   "/home/julien/projects/wayrest/server/api/stays/[slug].get.ts": {
-    "mtime": 1778348026.3424623,
-    "hash": "6914ccdfbc45b2e7f60f554bbfd7f783"
+    "mtime": 1778360379.1230922,
+    "hash": "b116d75aae16492b5c4529759d7c3523"
+  },
+  "/home/julien/projects/wayrest/server/utils/luhn.test.ts": {
+    "mtime": 1778361020.6680603,
+    "hash": "918e6b4780954ed3c37ab3b61035571d"
   },
   "/home/julien/projects/wayrest/server/utils/slugify.ts": {
     "mtime": 1778347416.0221317,
@@ -31,9 +43,17 @@
     "mtime": 1778347420.9474273,
     "hash": "1bcae44d6d382f4a77ce99a86f270ef2"
   },
+  "/home/julien/projects/wayrest/server/utils/luhn.ts": {
+    "mtime": 1778360398.196325,
+    "hash": "3122e947969cf1e7da59356b024102e3"
+  },
   "/home/julien/projects/wayrest/app/app.vue": {
     "mtime": 1778028332.9132636,
     "hash": "9adbd800b902d3f0f1c2a98a12b1e7f1"
+  },
+  "/home/julien/projects/wayrest/app/stores/booking.ts": {
+    "mtime": 1778360391.2167537,
+    "hash": "ad73ac325ec210794a9c1a6db34a139f"
   },
   "/home/julien/projects/wayrest/app/composables/useSupabase.ts": {
     "mtime": 1777843895.0700297,
@@ -52,8 +72,12 @@
     "hash": "96ac27f03d61851aab0b813c0692b24c"
   },
   "/home/julien/projects/wayrest/app/components/AppHeader.vue": {
-    "mtime": 1778347463.4171247,
-    "hash": "2cd53dcddfa12a5909ac2ee6583471d2"
+    "mtime": 1778360444.6623306,
+    "hash": "9cb57b17027e5c01a14de30a1238af7d"
+  },
+  "/home/julien/projects/wayrest/app/components/BookingStepper.vue": {
+    "mtime": 1778360453.8841102,
+    "hash": "e56f651776853a6d13a2c2585f12132a"
   },
   "/home/julien/projects/wayrest/app/components/SearchBar.vue": {
     "mtime": 1778341964.954644,
@@ -71,21 +95,49 @@
     "mtime": 1778347469.2664366,
     "hash": "ec0c2ef98672647c7c82f98f01929a9a"
   },
+  "/home/julien/projects/wayrest/app/pages/booking/[slug]/summary.vue": {
+    "mtime": 1778360788.3616447,
+    "hash": "0cd3d5731cdc930166bacc3fd3df18dd"
+  },
+  "/home/julien/projects/wayrest/app/pages/booking/[slug]/payment.test.ts": {
+    "mtime": 1778361224.7808456,
+    "hash": "fa1fdf41586592f7ba9d253a86b48c61"
+  },
+  "/home/julien/projects/wayrest/app/pages/booking/[slug]/confirmation.test.ts": {
+    "mtime": 1778361132.0714474,
+    "hash": "e3e0b0dfa1f853216ab2d25fb8b1dfb2"
+  },
+  "/home/julien/projects/wayrest/app/pages/booking/[slug]/payment.vue": {
+    "mtime": 1778360875.685321,
+    "hash": "dcab54819437c0544faa5b9178eb57c8"
+  },
+  "/home/julien/projects/wayrest/app/pages/booking/[slug]/summary.test.ts": {
+    "mtime": 1778361100.501641,
+    "hash": "25f7651a3a9f4299ea9ed374ce4b7a63"
+  },
+  "/home/julien/projects/wayrest/app/pages/booking/[slug]/confirmation.vue": {
+    "mtime": 1778360931.35937,
+    "hash": "a837760ccd60a5a4824bc78e99aacbd5"
+  },
   "/home/julien/projects/wayrest/app/pages/stays/[slug].vue": {
-    "mtime": 1778347733.3117042,
-    "hash": "448f1221d8047fe3128e4c85ac0d56cd"
+    "mtime": 1778360472.7182057,
+    "hash": "7bbee7a3cc8433f16d66d4546586fcd9"
   },
   "/home/julien/projects/wayrest/app/pages/stays/[slug].test.ts": {
-    "mtime": 1778347643.326498,
-    "hash": "695196ff35168dea62aff019d4ddc55c"
+    "mtime": 1778361086.7545152,
+    "hash": "4bbf255e2de43d97cc67f343a119003b"
   },
   "/home/julien/projects/wayrest/app/types/search.ts": {
     "mtime": 1777838617.8797379,
     "hash": "b31b7089174ce2d86fa0b455cf7513dc"
   },
+  "/home/julien/projects/wayrest/app/types/booking.ts": {
+    "mtime": 1778360359.600302,
+    "hash": "7d0f28f8f95043538481a74cee6336c3"
+  },
   "/home/julien/projects/wayrest/app/types/listing.ts": {
-    "mtime": 1778347216.1002064,
-    "hash": "ad3b64d0ebbe19d77c4df8cd7d1f6839"
+    "mtime": 1778360365.786122,
+    "hash": "f6d8ec60aed3ab08f8b6cf52514a0757"
   },
   "/home/julien/projects/wayrest/README.md": {
     "mtime": 1777610002.0,
@@ -98,6 +150,10 @@
   "/home/julien/projects/wayrest/public/robots.txt": {
     "mtime": 1777610002.0,
     "hash": "243b03ecba82dde9612cd5163145a86d"
+  },
+  "/home/julien/projects/wayrest/specs/booking.html": {
+    "mtime": 1778359664.5058818,
+    "hash": "e655708b5dda3f2b80aa8032e55d6732"
   },
   "/home/julien/projects/wayrest/specs/design-system.html": {
     "mtime": 1777844250.4017818,
@@ -118,6 +174,10 @@
   "/home/julien/projects/wayrest/specs/DESIGN.md": {
     "mtime": 1777844384.0290773,
     "hash": "76d7cec8238967b81a03115f5113158c"
+  },
+  "/home/julien/projects/wayrest/specs/features/SPEC-006-booking.md": {
+    "mtime": 1778359802.1553106,
+    "hash": "670a7bc171564029959baec915d9d71f"
   },
   "/home/julien/projects/wayrest/specs/features/SPEC-005-listing-detail.md": {
     "mtime": 1778345774.448322,

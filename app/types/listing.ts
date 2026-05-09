@@ -31,6 +31,8 @@ export interface Host {
 export interface ListingDetail extends Listing {
   images: ListingImage[]
   host: Host | null
+  cleaningFee: number
+  serviceFeePercent: number
 }
 
 export interface ListingCardProps {

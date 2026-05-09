@@ -1,15 +1,18 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { mount } from '@vue/test-utils'
+import { setActivePinia, createPinia } from 'pinia'
 import { ref } from 'vue'
 import StayPage from './[slug].vue'
 import type { ListingDetail } from '~/types/listing'
 
 const mockUseFetch = vi.hoisted(() => vi.fn())
 const mockUseRoute = vi.hoisted(() => vi.fn(() => ({ params: { slug: 'chalet-test-1' } })))
+const mockNavigateTo = vi.hoisted(() => vi.fn())
 
 vi.mock('#app', () => ({
   useFetch: mockUseFetch,
   useRoute: mockUseRoute,
+  navigateTo: mockNavigateTo,
 }))
 
 const listing: ListingDetail = {
@@ -27,6 +30,8 @@ const listing: ListingDetail = {
   bathrooms: 2,
   amenities: ['wifi', 'parking'],
   hostId: 10,
+  cleaningFee: 45,
+  serviceFeePercent: 10,
   images: [
     { id: 1, listingId: 1, url: 'https://example.com/1.jpg', position: 0 },
     { id: 2, listingId: 1, url: 'https://example.com/2.jpg', position: 1 },
@@ -49,7 +54,9 @@ const globalStubs = {
 
 describe('[slug].vue', () => {
   beforeEach(() => {
+    setActivePinia(createPinia())
     mockUseFetch.mockReset()
+    mockNavigateTo.mockReset()
   })
 
   it('page: renders listing title and location', async () => {
